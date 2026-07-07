@@ -9,24 +9,14 @@ from utils.errors import BackendConnectionError
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
-    # --- Per-category backend base URLs ---
-    MARKET_BACKEND_URL: str = ""
-    ACCOUNT_BACKEND_URL: str = ""
-    TRADING_BACKEND_URL: str = ""
-    RESEARCH_BACKEND_URL: str = ""
-
     # --- Crypto Settings ---
     CRYPTO_ENABLED: bool = True
 
+    # --- Need To Be Set As Config Variable ---
     API_CLIENT_ID: str = ""
     API_SESSION_SECRET: str = ""
 
-    # Dev fallback ONLY, for when the handshake endpoint is unavailable
     API_RSA_PUBLIC_KEY: str | None = None
-
-    HANDSHAKE_PATH: str = "/handshake/get-public-key"
-    HANDSHAKE_PUBLIC_KEY_TTL_SECONDS: int = 3600
-    HANDSHAKE_CLIENT_ID_HEADER: str = "X-API-Client-Id"
 
     # --- Resilience ---
     MAX_CONCURRENT_REQUESTS: int = 20
@@ -34,11 +24,6 @@ class Settings(BaseSettings):
 
     # --- Logging ---
     LOG_LEVEL: str = "INFO"
-
-    # --- Trading session headers ---
-    # TBD — confirm exact header names against Axis Direct RAPID API docs before production use
-    TRADING_AUTH_HEADER: str = "X-Auth-Token"
-    TRADING_SUB_ACCOUNT_HEADER: str = "X-Sub-Account-Id"
 
     def backend_url(self, category: str) -> str:
         mapping = {

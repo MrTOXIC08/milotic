@@ -2,10 +2,11 @@
 
 import os
 
+from app import mcp
 from dotenv import load_dotenv
 
-from app import mcp
 from utils.logging import logger, setup_logging
+from utils.constants import NAME, VERSION
 
 # Load environment variables
 load_dotenv()
@@ -14,7 +15,7 @@ load_dotenv()
 setup_logging(os.getenv("LOG_LEVEL", "INFO"))
 
 def main() -> None:
-    logger.info("server_starting", name="Milotic", version="0.1.0")
+    logger.info("server_starting", name=NAME, version=VERSION)
     mcp.run()
 
 if __name__ == "__main__":
