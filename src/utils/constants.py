@@ -14,6 +14,7 @@ CATEGORY_RESEARCH = "research"
 HEADER_REQUEST_ID = "X-Req-ID"
 
 # --- Authentication Headers ---
+HEADER_AUTHORIZATION = "Authorization"
 HEADER_AUTH_TOKEN = "X-AuthToken"
 HEADER_ASL_TOKEN = "X-AslToken"
 HEADER_REFRESH_TOKEN = "X-Refresh-Token"

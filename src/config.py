@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     # --- Crypto Settings ---
     CRYPTO_ENABLED: bool = True
 
-    # --- Need To Be Set As Config Variable ---
+    # --- Need To Get From Environment Variable ---
     API_CLIENT_ID: str = ""
     API_SESSION_SECRET: str = ""
 

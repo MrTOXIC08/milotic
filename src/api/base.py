@@ -65,6 +65,7 @@ class BaseClient:
             new._handshake_client = HandshakeClient(
                 base_url=new._base_url,
                 path=_config.settings.HANDSHAKE_PATH,
+                client_authorization_header=_config.settings.HANDSHAKE_AUTHORIZATION_HEADER,
                 client_id_header=_config.settings.HANDSHAKE_CLIENT_ID_HEADER,
             )
 

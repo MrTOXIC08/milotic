@@ -7,10 +7,12 @@ circular dependency during the crypto bootstrap process.
 
 
 import httpx
+
 from async_lru import alru_cache
 
 from utils.errors import HandshakeError
 from utils.logging import logger
+from utils.constants import HEADER_API_CLIENT_ID, HEADER_AUTHORIZATION
 
 # Default cache TTL for the public key (e.g., 1 hour)
 DEFAULT_CACHE_TTL_SECONDS = 3600
@@ -23,12 +25,14 @@ class HandshakeClient:
     def __init__(
         self,
         base_url: str,
-        path: str = "/handshake/get-public-key",
-        client_id_header: str = "X-API-Client-Id",
+        path: str = "/handshake",
+        client_authorization_header: str = HEADER_AUTHORIZATION,
+        client_id_header: str = HEADER_API_CLIENT_ID,
     ):
         self.base_url = base_url
         self.path = path
         self.client_id_header = client_id_header
+        self.client_authorization_header = client_authorization_header
         self._http_client = httpx.AsyncClient(base_url=self.base_url)
 
     @alru_cache(maxsize=1, ttl=DEFAULT_CACHE_TTL_SECONDS)
