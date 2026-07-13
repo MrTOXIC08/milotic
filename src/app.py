@@ -10,10 +10,7 @@ _components = Path(__file__).parent / "components"
 mcp = FastMCP(
     "Milotic",
     providers=[
-        FileSystemProvider(root=_components / "system",   reload=True),
-        FileSystemProvider(root=_components / "market",   reload=True),
-        FileSystemProvider(root=_components / "account",  reload=True),
-        FileSystemProvider(root=_components / "trading",  reload=True),
-        FileSystemProvider(root=_components / "research", reload=True),
+        FileSystemProvider(root=_components / "system", reload=True),
+        FileSystemProvider(root=_components / "trading", reload=True),
     ],
 )

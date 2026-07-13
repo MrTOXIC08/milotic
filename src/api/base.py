@@ -157,17 +157,13 @@ class BaseClient:
                 kwargs["json"] = self._cipher.encrypt_json(json_payload)
 
         try:
-            response = await self._http_client.request(
-                method, path, headers=headers, **kwargs
-            )
+            response = await self._http_client.request(method, path, headers=headers, **kwargs)
 
             # Handle key rotation: refresh and retry once
             if response.status_code == 401 and _retry_on_401 and _config.settings.CRYPTO_ENABLED:
                 logger.warning("auth_401_refreshing_key", category=self._category, path=path)
                 await self._refresh_crypto()
-                return await self._do_request(
-                    method, path, _retry_on_401=False, **kwargs
-                )
+                return await self._do_request(method, path, _retry_on_401=False, **kwargs)
 
             if response.status_code == 429:
                 self._record_failure()

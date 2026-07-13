@@ -1,6 +1,7 @@
 """
 Handles the creation of the RSA-encrypted X-API-Encryption-Key header.
 """
+
 import base64
 
 from cryptography.hazmat.primitives import hashes, serialization
@@ -17,9 +18,7 @@ def _load_public_key(pem_or_der_b64: str):
     if "-----BEGIN" not in pem_or_der_b64:
         # Assumes base64-encoded DER key body, needs PEM wrapping
         pem_data = (
-            "-----BEGIN PUBLIC KEY-----\n"
-            f"{pem_or_der_b64}\n"
-            "-----END PUBLIC KEY-----"
+            f"-----BEGIN PUBLIC KEY-----\n{pem_or_der_b64}\n-----END PUBLIC KEY-----"
         ).encode()
     else:
         pem_data = pem_or_der_b64.encode("utf-8")
@@ -29,11 +28,13 @@ def _load_public_key(pem_or_der_b64: str):
     except Exception as e:
         raise CryptoError("Failed to load or parse RSA public key.") from e
 
+
 class SessionKeyProvider:
     """
     Encrypts the AES session secret using the backend's RSA public key to
     create the value for the X-API-Encryption-Key header.
     """
+
     def __init__(self, rsa_public_key_str: str):
         self._public_key = _load_public_key(rsa_public_key_str)
 

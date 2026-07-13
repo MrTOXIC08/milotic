@@ -28,7 +28,7 @@ HEADER_API_CLIENT_ID = "X-API-Client-Id"
 HEADER_API_ENCRYPTION_KEY = "X-API-Encryption-Key"
 
 # --- Account ---
-HEADER_SUB_ACCOUNT_ID = "X-SubAccountID" 
+HEADER_SUB_ACCOUNT_ID = "X-SubAccountID"
 
 # --- Messaging ---
 HEADER_MSG_SEQUENCE = "X-MsgSequence"

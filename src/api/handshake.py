@@ -5,23 +5,23 @@ This client uses a plain httpx client, NOT the BaseClient, to avoid a
 circular dependency during the crypto bootstrap process.
 """
 
-
 import httpx
-
 from async_lru import alru_cache
 
+from utils.constants import HEADER_API_CLIENT_ID, HEADER_AUTHORIZATION
 from utils.errors import HandshakeError
 from utils.logging import logger
-from utils.constants import HEADER_API_CLIENT_ID, HEADER_AUTHORIZATION
 
 # Default cache TTL for the public key (e.g., 1 hour)
 DEFAULT_CACHE_TTL_SECONDS = 3600
+
 
 class HandshakeClient:
     """
     Handles the initial handshake to retrieve the RSA public key for creating
     the X-API-Encryption-Key header.
     """
+
     def __init__(
         self,
         base_url: str,
@@ -51,9 +51,9 @@ class HandshakeClient:
         try:
             response = await self._http_client.get(self.path, headers=headers)
             response.raise_for_status()
-            
+
             data = response.json()
-            
+
             # The Go backend wraps responses; we expect data.publicKey
             public_key = data.get("data", {}).get("publicKey")
 
@@ -73,9 +73,7 @@ class HandshakeClient:
                 response=e.response.text,
                 **log_params,
             )
-            raise HandshakeError(
-                f"Handshake failed with status {e.response.status_code}."
-            ) from e
+            raise HandshakeError(f"Handshake failed with status {e.response.status_code}.") from e
         except (TimeoutError, httpx.RequestError) as e:
             logger.error("handshake_connection_error", error=str(e), **log_params)
             raise HandshakeError("Could not connect to the backend for handshake.") from e

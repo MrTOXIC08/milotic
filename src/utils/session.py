@@ -12,7 +12,9 @@ async def get_session_headers(ctx: Context) -> dict[str, str]:
     sub_account_id = await ctx.get_state("sub_account_id")
     if not auth_token:
         raise BackendConnectionError("Not connected. Call system_connect_start first.")
-    return {
+    headers = {
         _config.settings.TRADING_AUTH_HEADER: auth_token,
-        _config.settings.TRADING_SUB_ACCOUNT_HEADER: sub_account_id,
     }
+    if sub_account_id:
+        headers[_config.settings.TRADING_SUB_ACCOUNT_HEADER] = sub_account_id
+    return headers

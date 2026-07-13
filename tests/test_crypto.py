@@ -6,20 +6,23 @@ from utils.errors import CryptoError, DecryptionError
 # Use a 32-byte key for AES-256
 SECRET_KEY = "0123456789abcdef0123456789abcdef"
 
+
 @pytest.fixture
 def cipher() -> MiloticCipher:
     return MiloticCipher(SECRET_KEY)
 
+
 def test_cipher_round_trip(cipher: MiloticCipher):
     """Test that encrypting and then decrypting a message yields the original."""
     original_text = '{"message": "hello, world", "value": 123}'
-    
+
     encrypted = cipher.encrypt(original_text)
     assert isinstance(encrypted, str)
     assert len(encrypted.split(".")) == 3
 
     decrypted = cipher.decrypt(encrypted)
     assert decrypted == original_text
+
 
 def test_json_wrapper_round_trip(cipher: MiloticCipher):
     """Test the full JSON-in, JSON-out flow."""
@@ -31,31 +34,36 @@ def test_json_wrapper_round_trip(cipher: MiloticCipher):
 
     decrypted_data = cipher.decrypt_json(encrypted_wrapper)
     assert decrypted_data == original_data
-    
+
+
 def test_decryption_failure_bad_format(cipher: MiloticCipher):
     """Test that malformed wire strings raise DecryptionError."""
     with pytest.raises(DecryptionError, match="Invalid encrypted payload format"):
         cipher.decrypt("part1.part2")
+
 
 def test_decryption_failure_bad_base64(cipher: MiloticCipher):
     """Test that bad base64 encoding raises DecryptionError."""
     with pytest.raises(DecryptionError, match="Failed to decrypt data"):
         cipher.decrypt("not-b64.not-b64.not-b64")
 
+
 def test_decryption_failure_wrong_key():
     """Test that decrypting with a different key fails."""
     cipher1 = MiloticCipher(SECRET_KEY)
     cipher2 = MiloticCipher("another-key-that-is-32-bytes-long")
-    
+
     encrypted = cipher1.encrypt("my secret message")
-    
+
     with pytest.raises(DecryptionError, match="Failed to decrypt data"):
         cipher2.decrypt(encrypted)
+
 
 def test_invalid_key_length():
     """Test that initializing with a key shorter than 32 bytes raises CryptoError."""
     with pytest.raises(CryptoError, match="must be at least 32 bytes"):
         MiloticCipher("shortkey")
+
 
 # --- Golden Test Vector ---
 # This vector should be generated from the Go implementation using the same key.

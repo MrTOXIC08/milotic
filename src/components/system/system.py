@@ -5,6 +5,7 @@ from fastmcp.tools import tool
 
 from api.base import BaseClient
 from utils.decorators import milotic_tool
+from utils.constants import VERSION
 
 
 @tool()
@@ -14,12 +15,7 @@ def system_get_health() -> dict[str, str]:
     Return server health status.
     Verifies the gateway is online and correctly configured.
     """
-    return {
-        "status": "ok",
-        "phase": "1.1",
-        "foundation": "refined",
-        "backend": "not_connected"
-    }
+    return {"status": "ok", "version": VERSION, "foundation": "refined", "backend": "not_connected"}
 
 
 @tool()

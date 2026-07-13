@@ -7,12 +7,10 @@ requires-python = ">=3.12"
 dependencies = [
     "fastmcp>=3.0.0,<4.0.0",
     "httpx>=0.28.1",
-    "pandas>=2.3.3",
-    "pandas-ta>=0.4.71b0",
-    "python-dotenv>=1.2.2",
     "structlog>=25.5.0",
     "async-lru>=2.0.4",
     "pydantic-settings>=2.0.0",
+    "cryptography>=42.0.0",
 ]
 
 [project.optional-dependencies]

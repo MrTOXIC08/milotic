@@ -34,6 +34,7 @@ async def test_base_client_full_flow(
     monkeypatch.setenv("API_SESSION_SECRET", "a-very-secure-32-byte-secret-key")
 
     import config
+
     importlib.reload(config)
 
     from api.base import BaseClient

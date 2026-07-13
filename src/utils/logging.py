@@ -6,12 +6,9 @@ from typing import Any
 import structlog
 
 # Keywords that trigger redaction in log values
-SECRET_KEYWORDS = [
-    "secret", "token", "password", "key", "payload", "encryption", "signature"
-]
-REDACTION_PATTERN = re.compile(
-    "|".join(f"\\b{key}\\b" for key in SECRET_KEYWORDS), re.IGNORECASE
-)
+SECRET_KEYWORDS = ["secret", "token", "password", "key", "payload", "encryption", "signature"]
+REDACTION_PATTERN = re.compile("|".join(f"\\b{key}\\b" for key in SECRET_KEYWORDS), re.IGNORECASE)
+
 
 def redact_secrets_processor(_, __, event_dict: dict[str, Any]) -> dict[str, Any]:
     """
@@ -25,9 +22,10 @@ def redact_secrets_processor(_, __, event_dict: dict[str, Any]) -> dict[str, Any
             event_dict[key] = "[REDACTED]"
     return event_dict
 
+
 def setup_logging(log_level: str = "INFO"):
     """Configure structlog for structured JSON logging with secret redaction."""
-    
+
     # Standard library logging configuration
     logging.basicConfig(
         format="%(message)s",
@@ -58,5 +56,6 @@ def setup_logging(log_level: str = "INFO"):
         logger_factory=structlog.PrintLoggerFactory(),
         cache_logger_on_first_use=True,
     )
+
 
 logger = structlog.get_logger()
