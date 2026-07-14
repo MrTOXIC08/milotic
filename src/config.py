@@ -1,5 +1,7 @@
 """Application configuration using Pydantic Settings."""
 
+import secrets
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from utils.errors import BackendConnectionError
@@ -12,9 +14,12 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    API_CLIENT_ID: str = "GALAXY_WEBAPP"
+    AUTHORIZATION: str = "CAOsBGMOSvj19jGNIRZpLY62Hd6yLA1r77H9MnQ4UyjaOsdo"
+
     # --- Backend Service URLs ---
-    ACCOUNT_BACKEND_URL: str = ""
-    TRADING_BACKEND_URL: str = ""
+    LOGIN_BACKEND_URL: str = "https://welcome-api.axisdirect.in"
+    INVESTOR_BACKEND_URL: str = "https://invest-api.axisdirect.in"
 
     # --- Crypto Settings ---
     CRYPTO_ENABLED: bool = True
@@ -27,14 +32,14 @@ class Settings(BaseSettings):
     API_RSA_PUBLIC_KEY: str | None = None
 
     # --- Handshake Configuration ---
-    HANDSHAKE_PATH: str = "/handshake/get-public-key"
+    HANDSHAKE_URL: str = "https://welcome-api.axisdirect.in/handshake"
     HANDSHAKE_PUBLIC_KEY_TTL_SECONDS: int = 3600
-    HANDSHAKE_CLIENT_ID_HEADER: str = "X-API-Client-Id"
-    HANDSHAKE_AUTHORIZATION_HEADER: str = "Authorization"
 
     # --- Headers Configuration ---
-    TRADING_AUTH_HEADER: str = "X-Auth-Token"
-    TRADING_SUB_ACCOUNT_HEADER: str = "X-Sub-Account-Id"
+    CONST_AUTHORIZATION_HEADER_KEY: str = "authorization"
+    CONST_AUTH_HEADER_KEY: str = "x-authToken"
+    CONST_SUB_ACCOUNT_HEADER_KEY: str = "x-subAccountId"
+    CONST_CLIENT_ID_HEADER_KEY: str = "x-api-client-id"
 
     # --- Resilience ---
     MAX_CONCURRENT_REQUESTS: int = 20
@@ -43,10 +48,14 @@ class Settings(BaseSettings):
     # --- Logging ---
     LOG_LEVEL: str = "INFO"
 
+    def model_post_init(self, __context) -> None:
+        if not self.API_SESSION_SECRET:
+            self.API_SESSION_SECRET = secrets.token_hex(16)
+
     def backend_url(self, category: str) -> str:
         mapping = {
-            "account": self.ACCOUNT_BACKEND_URL,
-            "trading": self.TRADING_BACKEND_URL,
+            "login": self.LOGIN_BACKEND_URL,
+            "investor": self.INVESTOR_BACKEND_URL,
         }
         url = mapping.get(category)
         if not url:

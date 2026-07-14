@@ -25,12 +25,13 @@ def redact_secrets_processor(_, __, event_dict: dict[str, Any]) -> dict[str, Any
 
 def setup_logging(log_level: str = "INFO"):
     """Configure structlog for structured JSON logging with secret redaction."""
+    level_num = getattr(logging, log_level.upper(), logging.INFO)
 
     # Standard library logging configuration
     logging.basicConfig(
         format="%(message)s",
-        stream=sys.stdout,
-        level=getattr(logging, log_level.upper()),
+        stream=sys.stderr,
+        level=level_num,
     )
 
     processors: list[Any] = [
@@ -42,7 +43,7 @@ def setup_logging(log_level: str = "INFO"):
         structlog.processors.TimeStamper(fmt="iso"),
     ]
 
-    if sys.stdout.isatty():
+    if sys.stderr.isatty():
         # Pretty console output for local dev
         processors.append(structlog.dev.ConsoleRenderer())
     else:
@@ -51,9 +52,9 @@ def setup_logging(log_level: str = "INFO"):
 
     structlog.configure(
         processors=processors,
-        wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
+        wrapper_class=structlog.make_filtering_bound_logger(level_num),
         context_class=dict,
-        logger_factory=structlog.PrintLoggerFactory(),
+        logger_factory=structlog.PrintLoggerFactory(file=sys.stderr),
         cache_logger_on_first_use=True,
     )
 

@@ -28,6 +28,19 @@ _instances: dict[str, "BaseClient"] = {}
 _registry_lock = asyncio.Lock()
 
 
+async def _log_request(request: httpx.Request) -> None:
+    # ponytail: log request details at debug level
+    logger.debug(
+        "http_request", method=request.method, url=str(request.url), headers=dict(request.headers)
+    )
+
+
+async def _log_response(response: httpx.Response) -> None:
+    # ponytail: load response content and log details
+    await response.aread()
+    logger.debug("http_response", status_code=response.status_code, content=response.text)
+
+
 class BaseClient:
     """
     Per-category HTTP client that manages crypto bootstrap and transparently
@@ -55,7 +68,10 @@ class BaseClient:
             new = cls.__new__(cls)
             new._category = category
             new._base_url = _config.settings.backend_url(category)
-            new._http_client = httpx.AsyncClient(base_url=new._base_url)
+            new._http_client = httpx.AsyncClient(
+                base_url=new._base_url,
+                event_hooks={"request": [_log_request], "response": [_log_response]},
+            )
             new._semaphore = asyncio.Semaphore(_config.settings.MAX_CONCURRENT_REQUESTS)
             new._consecutive_failures = 0
             new._circuit_open = False
@@ -63,10 +79,9 @@ class BaseClient:
             new._cipher: MiloticCipher | None = None
             new._encrypted_session_header: str | None = None
             new._handshake_client = HandshakeClient(
-                base_url=new._base_url,
-                path=_config.settings.HANDSHAKE_PATH,
-                client_authorization_header=_config.settings.HANDSHAKE_AUTHORIZATION_HEADER,
-                client_id_header=_config.settings.HANDSHAKE_CLIENT_ID_HEADER,
+                url=_config.settings.HANDSHAKE_URL,
+                client_authorization_header=_config.settings.CONST_AUTHORIZATION_HEADER_KEY,
+                client_id_header=_config.settings.CONST_CLIENT_ID_HEADER_KEY,
             )
 
             if _config.settings.CRYPTO_ENABLED:
@@ -89,7 +104,10 @@ class BaseClient:
 
     async def _bootstrap_crypto(self) -> None:
         logger.info("crypto_bootstrap_start", category=self._category)
-        public_key = await self._handshake_client.get_public_key(_config.settings.API_CLIENT_ID)
+        public_key = await self._handshake_client.get_public_key(
+            _config.settings.API_CLIENT_ID,
+            _config.settings.AUTHORIZATION,
+        )
         self._session_key_provider = SessionKeyProvider(public_key)
         self._encrypted_session_header = self._session_key_provider.encrypt_session_for_header(
             _config.settings.API_SESSION_SECRET
@@ -151,7 +169,10 @@ class BaseClient:
                 raise BackendConnectionError(
                     "Crypto components not initialised. Bootstrap may have failed."
                 )
-            headers[_config.settings.HANDSHAKE_CLIENT_ID_HEADER] = _config.settings.API_CLIENT_ID
+            headers[_config.settings.CONST_CLIENT_ID_HEADER_KEY] = _config.settings.API_CLIENT_ID
+            headers[_config.settings.CONST_AUTHORIZATION_HEADER_KEY] = (
+                _config.settings.AUTHORIZATION
+            )
             headers["X-API-Encryption-Key"] = self._encrypted_session_header
             if json_payload is not None:
                 kwargs["json"] = self._cipher.encrypt_json(json_payload)

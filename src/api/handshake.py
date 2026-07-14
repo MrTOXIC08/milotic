@@ -8,12 +8,22 @@ circular dependency during the crypto bootstrap process.
 import httpx
 from async_lru import alru_cache
 
-from utils.constants import HEADER_API_CLIENT_ID, HEADER_AUTHORIZATION
 from utils.errors import HandshakeError
 from utils.logging import logger
 
 # Default cache TTL for the public key (e.g., 1 hour)
 DEFAULT_CACHE_TTL_SECONDS = 3600
+
+
+async def _log_request(request: httpx.Request) -> None:
+    logger.debug(
+        "http_request", method=request.method, url=str(request.url), headers=dict(request.headers)
+    )
+
+
+async def _log_response(response: httpx.Response) -> None:
+    await response.aread()
+    logger.debug("http_response", status_code=response.status_code, content=response.text)
 
 
 class HandshakeClient:
@@ -24,19 +34,19 @@ class HandshakeClient:
 
     def __init__(
         self,
-        base_url: str,
-        path: str = "/handshake",
-        client_authorization_header: str = HEADER_AUTHORIZATION,
-        client_id_header: str = HEADER_API_CLIENT_ID,
+        url: str,
+        client_authorization_header: str = "authorization",
+        client_id_header: str = "x-api-client-id",
     ):
-        self.base_url = base_url
-        self.path = path
+        self.url = url
         self.client_id_header = client_id_header
         self.client_authorization_header = client_authorization_header
-        self._http_client = httpx.AsyncClient(base_url=self.base_url)
+        self._http_client = httpx.AsyncClient(
+            event_hooks={"request": [_log_request], "response": [_log_response]}
+        )
 
     @alru_cache(maxsize=1, ttl=DEFAULT_CACHE_TTL_SECONDS)
-    async def get_public_key(self, client_id: str) -> str:
+    async def get_public_key(self, client_id: str, authorization: str) -> str:
         """
         Fetches the RSA public key from the backend.
 
@@ -44,12 +54,15 @@ class HandshakeClient:
         is cleared on a TTL or can be cleared manually if a 401/1200 error
         from the gateway suggests a key rotation.
         """
-        headers = {self.client_id_header: client_id}
-        log_params = {"path": self.path, "client_id": client_id}
+        headers = {
+            self.client_id_header: client_id,
+            self.client_authorization_header: authorization,
+        }
+        log_params = {"url": self.url, "client_id": client_id}
         logger.info("handshake_start", **log_params)
 
         try:
-            response = await self._http_client.get(self.path, headers=headers)
+            response = await self._http_client.post(self.url, headers=headers)
             response.raise_for_status()
 
             data = response.json()

@@ -90,8 +90,13 @@ class MiloticCipher:
 
     def decrypt_json(self, wrapper: dict) -> dict:
         """Extracts the payload from the wrapper, decrypts, and deserializes to a dict."""
-        if "payload" not in wrapper or not isinstance(wrapper["payload"], str):
+        # ponytail: support both root-level and nested data.payload response structures
+        payload = wrapper.get("payload")
+        if not payload and "data" in wrapper and isinstance(wrapper["data"], dict):
+            payload = wrapper["data"].get("payload")
+
+        if not payload or not isinstance(payload, str):
             raise DecryptionError("Encrypted response is missing 'payload' field.")
 
-        decrypted_str = self.decrypt(wrapper["payload"])
+        decrypted_str = self.decrypt(payload)
         return json.loads(decrypted_str)

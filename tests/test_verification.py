@@ -31,6 +31,7 @@ async def test_base_client_full_flow(
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
     monkeypatch.setenv("TRADING_BACKEND_URL", "https://test.backend.api")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a-very-secure-32-byte-secret-key")
 
     import config
@@ -44,7 +45,7 @@ async def test_base_client_full_flow(
     # --- bootstrap ---
     client = await BaseClient.instance("trading")
 
-    mock_get_public_key.assert_awaited_once_with("test-client")
+    mock_get_public_key.assert_awaited_once_with("test-client", "test-auth")
     mock_session_provider.assert_called_once_with("mock-public-key")
     mock_provider_instance.encrypt_session_for_header.assert_called_once_with(
         settings.API_SESSION_SECRET

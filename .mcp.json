@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "milotic": {
+      "command": "uv",
+      "args": ["run", "python", "src/server.py"],
+      "cwd": "/Users/unio/go/src/ds/milotic",
+      "env": {
+        "PYTHONPATH": "src"
+      }
+    }
+  }
+}

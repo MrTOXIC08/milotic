@@ -180,7 +180,7 @@ async def test_trading_place_order_confirmed_calls_backend_with_reference_id(
     assert "reference_id" in payload
     # must be a valid UUID
     uuid.UUID(payload["reference_id"])
-    assert kwargs["headers"]["X-Auth-Token"] == "tok123"
+    assert kwargs["headers"]["x-authToken"] == "tok123"
 
 
 @pytest.mark.asyncio
@@ -223,7 +223,7 @@ async def test_trading_cancel_order_uses_session_headers(mock_delete: AsyncMock,
     mock_delete.assert_awaited_once()
     args, kwargs = mock_delete.call_args
     assert args[0] == "/orders/order-1"
-    assert kwargs["headers"]["X-Auth-Token"] == "tok123"
+    assert kwargs["headers"]["x-authToken"] == "tok123"
 
 
 @pytest.mark.asyncio
@@ -238,7 +238,7 @@ async def test_trading_get_order_uses_session_headers(mock_get: AsyncMock, mock_
     mock_get.assert_awaited_once()
     args, kwargs = mock_get.call_args
     assert args[0] == "/orders/order-1"
-    assert kwargs["headers"]["X-Auth-Token"] == "tok123"
+    assert kwargs["headers"]["x-authToken"] == "tok123"
 
 
 @pytest.mark.asyncio
