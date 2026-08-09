@@ -16,13 +16,13 @@ import respx
 
 import config
 from api.handshake import HandshakeClient
-from components.books.portfolio import books_get_portfolio
-from components.system.system import system_connect_start, system_connect_verify
-from components.trading.orders import (
+from components.books.orders import (
     trading_cancel_order,
     trading_get_order,
     trading_place_order,
 )
+from components.books.portfolio import books_get_portfolio
+from components.system.system import system_connect_start, system_connect_verify
 from utils.crypto import MiloticCipher
 
 
@@ -89,7 +89,7 @@ async def test_contract_sso_initiate(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("ACCOUNT_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("LOGIN_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -140,7 +140,7 @@ async def test_contract_sso_verify(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("ACCOUNT_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("LOGIN_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -207,7 +207,7 @@ async def test_contract_place_order(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("TRADING_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -252,7 +252,7 @@ async def test_contract_cancel_order(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("TRADING_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -283,7 +283,7 @@ async def test_contract_get_order(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("TRADING_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -322,7 +322,7 @@ async def test_contract_get_portfolio(
     mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
 
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("ACCOUNT_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
@@ -354,7 +354,7 @@ async def test_contract_get_portfolio(
         "data": encrypted_response,
     }
 
-    respx_mock.get("/v2/portfolio/multi").mock(
+    respx_mock.get("/trading/v2/portfolio/multi").mock(
         return_value=httpx.Response(200, json=wrapper_response)
     )
 

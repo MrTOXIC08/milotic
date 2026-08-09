@@ -1,8 +1,6 @@
 # Milotic — Trading MCP Gateway
 
-Python MCP server (Strategic Analyst layer) for read-only market data and research.
-
-**Phase 2 status:** Multi-backend scaffolding complete. Tools are structured by category; real backend calls replace stubs as the API spec lands.
+Python Model Context Protocol (MCP) server providing secure gateway integration for trading systems, account portfolio management, and market books.
 
 ---
 
@@ -11,54 +9,52 @@ Python MCP server (Strategic Analyst layer) for read-only market data and resear
 | Requirement | Notes |
 |-------------|--------|
 | **Python** | **3.12+** (`requires-python` in `pyproject.toml`) |
-| **uv** | [Install uv](https://docs.astral.sh/uv/getting-started/installation/) |
+| **uv** | Fast Python package installer and resolution tool ([Install uv](https://docs.astral.sh/uv/getting-started/installation/)) |
 
 ```bash
 uv --version
-uv python list    # ensure 3.12 is available
-uv python install 3.12  # if not listed
+uv python list          # Ensure 3.12+ is available
+uv python install 3.12  # Install Python 3.12 if needed
 ```
 
 ---
 
-## 1. Enter the project
+## 1. Environment Setup
+
+Clone the repository and sync the development environment:
 
 ```bash
 cd /path/to/milotic
-```
-
----
-
-## 2. Install dependencies
-
-```bash
 uv sync --all-extras --dev
 ```
 
 ---
 
-## 3. Environment
+## 2. Configuration
+
+Create your local `.env` file from `.env.example`:
 
 ```bash
 cp .env.example .env
 ```
 
-| Variable | Purpose |
-|----------|---------|
-| `MARKET_BACKEND_URL` | Base URL for the market data backend |
-| `ACCOUNT_BACKEND_URL` | Base URL for the account backend |
-| `TRADING_BACKEND_URL` | Base URL for the trading backend |
-| `RESEARCH_BACKEND_URL` | Base URL for the research/signals backend |
-| `CRYPTO_ENABLED` | Master toggle for AES payload encryption (default: `true`) |
-| `API_CLIENT_ID` | Sent as `X-API-Client-Id` header |
-| `API_SESSION_SECRET` | 32+ byte AES key, client-held, never transmitted plaintext |
-| `MAX_CONCURRENT_REQUESTS` | Per-client request concurrency cap (default: `20`) |
-| `CIRCUIT_BREAKER_THRESHOLD` | Consecutive failures before circuit opens (default: `5`) |
-| `LOG_LEVEL` | Server logging level (default: `INFO`) |
+| Variable | Purpose | Default / Example |
+|----------|---------|-------------------|
+| `ACCOUNT_BACKEND_URL` | Base URL for account/portfolio endpoints | `http://localhost:8000` |
+| `TRADING_BACKEND_URL` | Base URL for trading/order execution endpoints | `http://localhost:8000` |
+| `HANDSHAKE_URL` | URL to fetch RSA public key for encryption | `http://localhost:8000/public-key` |
+| `CRYPTO_ENABLED` | Master toggle for AES payload encryption | `true` |
+| `API_CLIENT_ID` | Sent as `X-API-Client-Id` header | `your-client-id` |
+| `API_SESSION_SECRET` | 32+ byte AES session secret key | `32_byte_secret_key_here` |
+| `MAX_CONCURRENT_REQUESTS` | Per-client request concurrency cap | `20` |
+| `CIRCUIT_BREAKER_THRESHOLD` | Consecutive failures before circuit opens | `5` |
+| `LOG_LEVEL` | Logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`) | `INFO` |
 
 ---
 
-## 4. Verify the install
+## 3. Verify Installation & Quality
+
+Run the test suite and code quality checks:
 
 ```bash
 uv run pytest
@@ -67,26 +63,30 @@ uv run ruff check .
 
 ---
 
-## 5. Inspect tools
+## 4. Inspect & Run MCP Server
+
+Inspect available MCP tools via FastMCP:
 
 ```bash
-uv run fastmcp inspect src/milotic/app.py:mcp
-uv run fastmcp inspect src/milotic/app.py:mcp --format mcp  # JSON detail
+uv run fastmcp inspect src/app.py:mcp
+uv run fastmcp inspect src/app.py:mcp --format mcp  # Detailed JSON schema
 ```
+
+Start the MCP server using stdio transport:
+
+```bash
+uv run python src/server.py
+```
+
+The process blocks on stdin/stdout to communicate with MCP clients.
 
 ---
 
-## 6. Run the MCP server (stdio)
+## 5. MCP Client Integration
 
-```bash
-uv run python src/milotic/server.py
-```
+### Cursor Integration
 
-The process blocks on stdin/stdout — use an MCP client to talk to it.
-
----
-
-## 7. Connect from Cursor
+Add to your Cursor settings (`.cursor/mcp.json` or Global MCP Settings):
 
 ```json
 {
@@ -96,9 +96,30 @@ The process blocks on stdin/stdout — use an MCP client to talk to it.
       "args": [
         "run",
         "--directory",
-        "/Users/unio/go/src/fc/milotic",
+        "/path/to/milotic",
         "python",
-        "src/milotic/server.py"
+        "src/server.py"
+      ]
+    }
+  }
+}
+```
+
+### Claude Desktop / Claude Code Integration
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "milotic": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/path/to/milotic",
+        "python",
+        "src/server.py"
       ]
     }
   }
@@ -107,40 +128,34 @@ The process blocks on stdin/stdout — use an MCP client to talk to it.
 
 ---
 
-## Project layout
+## Project Layout
 
 ```
 milotic/
-├── pyproject.toml
-├── .env.example
-└── src/milotic/
-    ├── app.py                # FastMCP + per-category FileSystemProviders
-    ├── server.py             # Entry: logging, dotenv, mcp.run()
-    ├── config.py             # Pydantic Settings + backend_url(category) helper
-    ├── components/           # MCP tools — auto-discovered by category
-    │   ├── system/           # system_get_health
-    │   ├── market/           # market_get_quote, market_get_ohlcv, …
-    │   ├── account/          # account_list_positions, account_get_balance, …
-    │   ├── trading/          # trading_place_order, trading_cancel_order, …
-    │   └── research/         # research_get_signal, research_get_rsi, …
-    ├── api/
-    │   ├── base.py           # BaseClient (per-category singleton, circuit breaker, rate limit)
-    │   ├── handshake.py      # RSA public-key fetch with 1-hour cache
-    │   └── session.py        # RSA-OAEP session key encryption
-    ├── services/             # Business logic (TA indicators, aggregation helpers)
-    │   ├── market.py
-    │   ├── technicals.py     # pandas-ta wrappers
-    │   ├── account.py
-    │   └── research.py
-    └── utils/                # logging, crypto (AES-256-GCM), errors, decorators
+├── pyproject.toml         # Project dependencies and configuration
+├── uv.lock                # Locked dependency tree
+├── .env.example           # Example environment variables
+├── README.md              # Project documentation
+├── LICENSE                # License information
+├── src/
+│   ├── app.py             # FastMCP application & tool auto-discovery
+│   ├── server.py          # Server entrypoint (logging & stdio runner)
+│   ├── config.py          # Pydantic Settings & backend URL mapping
+│   ├── components/        # MCP tools organized by category
+│   │   ├── system/        # system_get_health, system_connect_start, …
+│   │   ├── books/         # books_get_portfolio, books_get_orders, …
+│   │   └── trading/       # trading_place_order, trading_cancel_order, …
+│   ├── api/               # API BaseClient, RSA handshake, & session encryption
+│   └── utils/             # Redacted logging, AES-GCM crypto, errors, decorators
+└── tests/                 # Pytest test suite matching component categories
 ```
 
 ---
 
-## Adding a new tool
+## Adding a New Tool
 
-1. Add a file under the correct category directory, e.g. `src/milotic/components/market/trades.py`.
-2. Apply both decorators; follow `category_action_entity` naming:
+1. Create a Python file under `src/components/<category>/`, for example `src/components/books/holdings.py`.
+2. Define the tool using `@tool()` and `@milotic_tool` decorators following the `category_action_entity` naming pattern:
 
 ```python
 from fastmcp.tools import tool
@@ -149,37 +164,40 @@ from api.base import BaseClient
 
 @tool()
 @milotic_tool
-async def market_get_trades(symbol: str, limit: int = 50) -> dict:
-    """Description for the LLM — what it does and why to call it."""
-    client = await BaseClient.instance("market")
-    return await client.get(f"/trades/{symbol}", params={"limit": limit})
+async def books_get_holdings(symbol: str | None = None) -> dict:
+    """Retrieve holdings from books account with optional symbol filtering."""
+    client = await BaseClient.instance("account")
+    params = {"symbol": symbol} if symbol else {}
+    return await client.get("/holdings", params=params)
 ```
 
-3. Add a test in `tests/<category>/` and run `uv run pytest`.
+3. Add corresponding unit/contract tests under `tests/<category>/` and verify:
+
+```bash
+uv run pytest
+```
 
 ---
 
 ## Troubleshooting
 
-| Symptom | Fix |
-|---------|-----|
-| Python version rejected | Use **3.12+**: `uv python install 3.12` then `uv sync` |
-| `ModuleNotFoundError: milotic` | Run from repo root after `uv sync` |
-| `BackendConnectionError: No backend URL configured for category 'X'` | Set `X_BACKEND_URL` in `.env` |
-| No tools listed | Ensure files under `components/<category>/` use `@tool()` + `@milotic_tool` |
-| Server appears to hang | Expected for stdio; connect via Cursor or MCP Inspector |
-| Tests fail on naming | Names must follow `category_action_entity` with an allowed category prefix |
-| Circuit breaker open | Backend returned too many errors; restart server or wait for reset |
+| Symptom | Cause / Fix |
+|---------|-------------|
+| `ModuleNotFoundError: src` | Ensure commands are executed from the repo root with `uv run` |
+| `BackendConnectionError` | Check that backend URLs (`ACCOUNT_BACKEND_URL`, etc.) are configured in `.env` |
+| Tools not showing in MCP client | Verify tool files in `src/components/` use both `@tool()` and `@milotic_tool` |
+| Server process blocks | Expected behavior for stdio transport; connect via an MCP client or Inspector |
+| Circuit breaker opens | Backend endpoint exceeded failure threshold; inspect backend status |
 
 ---
 
-## Quick reference
+## Quick Reference Commands
 
 ```bash
-uv sync --all-extras --dev
-cp .env.example .env
-uv run pytest
-uv run ruff check .
-uv run fastmcp inspect src/milotic/app.py:mcp
-uv run python src/milotic/server.py
+uv sync --all-extras --dev      # Install dependencies
+cp .env.example .env            # Configure environment
+uv run pytest                   # Run test suite
+uv run ruff check .             # Run linter
+uv run fastmcp inspect src/app.py:mcp  # Inspect MCP tools
+uv run python src/server.py     # Run MCP server
 ```

@@ -29,7 +29,7 @@ async def test_base_client_full_flow(
 
     # --- env ---
     monkeypatch.setenv("CRYPTO_ENABLED", "true")
-    monkeypatch.setenv("TRADING_BACKEND_URL", "https://test.backend.api")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://test.backend.api")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("AUTHORIZATION", "test-auth")
     monkeypatch.setenv("API_SESSION_SECRET", "a-very-secure-32-byte-secret-key")
@@ -43,7 +43,7 @@ async def test_base_client_full_flow(
     from utils.crypto import MiloticCipher
 
     # --- bootstrap ---
-    client = await BaseClient.instance("trading")
+    client = await BaseClient.instance("investor")
 
     mock_get_public_key.assert_awaited_once_with("test-client", "test-auth")
     mock_session_provider.assert_called_once_with("mock-public-key")

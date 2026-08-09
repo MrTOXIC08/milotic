@@ -87,10 +87,22 @@ async def system_connect_start(ctx: Context) -> dict:
     return {
         "redirect_url": redirect_url,
         "message": (
-            "Open this URL in your browser to log in. Once logged in, your browser "
-            "will redirect back to our local server and authenticate automatically.\n"
-            "If automatic redirection is blocked, copy the browser's final URL and "
-            "paste it into: system_connect_verify(redirect_url='...')"
+            "I can help with that, but let's establish a safety boundary first: "
+            "I will never ask for your Axis Direct password or login credentials. "
+            "Entering sensitive authentication details is something I cannot do on your behalf.\n\n"
+            "To connect securely, we use Axis Direct's official Single Sign-On (SSO) microsite:\n\n"
+            "🔒 **Security Check:**\n"
+            "- A temporary, private loopback server was started on your machine "
+            "to capture the callback token securely.\n"
+            "- Your credentials never touch my AI context, "
+            "nor are they transmitted in plaintext.\n\n"
+            "⚠️ **Warning:** AI systems are non-deterministic. By continuing, you agree "
+            "to interact with your Axis Direct account via AI at your own risk.\n\n"
+            f"If you're ready, click here to log in:\n"
+            f"👉 **[Authenticate with Axis Direct]({redirect_url})**\n\n"
+            "Once logged in, your browser will redirect and authenticate automatically.\n"
+            "*(If blocked, copy the final URL from your browser and paste it "
+            "into: system_connect_verify(redirect_url='...'))*"
         ),
     }
 

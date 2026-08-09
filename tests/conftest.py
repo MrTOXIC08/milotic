@@ -21,8 +21,8 @@ def mock_env(monkeypatch):
     monkeypatch.setenv("CRYPTO_ENABLED", "false")
     monkeypatch.setenv("API_CLIENT_ID", "test-client")
     monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
-    monkeypatch.setenv("ACCOUNT_BACKEND_URL", "http://account.test")
-    monkeypatch.setenv("TRADING_BACKEND_URL", "http://trading.test")
+    monkeypatch.setenv("LOGIN_BACKEND_URL", "http://login.test")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "http://investor.test")
 
     import config as cfg
 

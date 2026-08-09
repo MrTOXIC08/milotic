@@ -8,7 +8,7 @@ import pytest
 import respx
 
 from api.base import BaseClient
-from components.trading.orders import (
+from components.books.orders import (
     trading_cancel_order,
     trading_get_order,
     trading_place_order,
@@ -34,11 +34,11 @@ def make_ctx() -> AsyncMock:
 
 @pytest.mark.asyncio
 async def test_trading_place_order_success(mock_env):
-    with respx.mock(base_url="http://trading.test") as router:
+    with respx.mock(base_url="http://investor.test") as router:
         router.post("/orders").mock(
             return_value=httpx.Response(200, json={"order_id": "abc123", "status": "pending"})
         )
-        client = await BaseClient.instance("trading")
+        client = await BaseClient.instance("investor")
         result = await client.post(
             "/orders",
             json={"symbol": "AAPL", "side": "buy", "quantity": 10, "order_type": "market"},
@@ -48,9 +48,9 @@ async def test_trading_place_order_success(mock_env):
 
 @pytest.mark.asyncio
 async def test_trading_rate_limit_raises(mock_env):
-    with respx.mock(base_url="http://trading.test") as router:
+    with respx.mock(base_url="http://investor.test") as router:
         router.post("/orders").mock(return_value=httpx.Response(429))
-        client = await BaseClient.instance("trading")
+        client = await BaseClient.instance("investor")
         with pytest.raises(RateLimitError):
             await client.post("/orders", json={})
 
