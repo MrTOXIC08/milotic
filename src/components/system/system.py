@@ -1,6 +1,7 @@
 """System-related tools for Milotic Gateway."""
 
 import asyncio
+import contextlib
 
 from fastmcp import Context
 from fastmcp.tools import tool
@@ -18,10 +19,8 @@ async def _start_loopback_server() -> int:
     global _loopback_server, _latest_sso_id
 
     if _loopback_server:
-        try:
+        with contextlib.suppress(Exception):
             _loopback_server.close()
-        except Exception:
-            pass
 
     async def handle_client(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         global _latest_sso_id
@@ -44,10 +43,8 @@ async def _start_loopback_server() -> int:
             await writer.drain()
         finally:
             writer.close()
-            try:
+            with contextlib.suppress(Exception):
                 await writer.wait_closed()
-            except Exception:
-                pass
 
     _loopback_server = await asyncio.start_server(handle_client, "127.0.0.1", 0)
     return _loopback_server.sockets[0].getsockname()[1]

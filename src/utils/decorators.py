@@ -30,14 +30,14 @@ def milotic_tool(func: Callable) -> Callable:
                 tool=tool_name,
                 error=str(e),
                 error_type=e.__class__.__name__,
-            )  # noqa: E501
+            )
             return {"error": str(e), "category": e.__class__.__name__}
         except Exception as e:
             logger.exception("tool_call_error_unexpected", tool=tool_name, error=str(e))
             return {
                 "error": "An internal error occurred while processing the request.",
                 "category": "InternalError",
-            }  # noqa: E501
+            }
 
     @functools.wraps(func)
     def sync_wrapper(*args, **kwargs) -> Any:
@@ -55,14 +55,14 @@ def milotic_tool(func: Callable) -> Callable:
                 tool=tool_name,
                 error=str(e),
                 error_type=e.__class__.__name__,
-            )  # noqa: E501
+            )
             return {"error": str(e), "category": e.__class__.__name__}
         except Exception as e:
             logger.exception("tool_call_error_unexpected", tool=tool_name, error=str(e))
             return {
                 "error": "An internal error occurred while processing the request.",
                 "category": "InternalError",
-            }  # noqa: E501
+            }
 
     if inspect.iscoroutinefunction(func):
         return async_wrapper

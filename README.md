@@ -52,25 +52,37 @@ cp .env.example .env
 
 ---
 
-## 3. Verify Installation & Quality
+## 3. Testing & MCP Inspector
 
-Run the test suite and code quality checks:
+For a full testing guide, see [docs/TESTING.md](file:///Users/unio/go/src/ds/milotic/docs/TESTING.md).
+
+### Interactive UI Testing (MCP Inspector)
+
+Launch the interactive FastMCP Inspector in your browser:
 
 ```bash
+uv run fastmcp dev inspector src/app.py:mcp
+```
+
+This starts the MCP Inspector Web UI at `http://localhost:6274` with an auto-generated `MCP_INSPECTOR_API_TOKEN`. Open `http://localhost:6274` in your browser to interactively test all 8 active MCP tools.
+
+### CLI Inspection & Validation
+
+```bash
+# Verify tool registration
+uv run fastmcp inspect src/app.py:mcp
+
+# View full JSON schema for all tools
+uv run fastmcp inspect src/app.py:mcp --format mcp
+
+# Run automated tests and linter
 uv run pytest
 uv run ruff check .
 ```
 
 ---
 
-## 4. Inspect & Run MCP Server
-
-Inspect available MCP tools via FastMCP:
-
-```bash
-uv run fastmcp inspect src/app.py:mcp
-uv run fastmcp inspect src/app.py:mcp --format mcp  # Detailed JSON schema
-```
+## 4. Run MCP Server
 
 Start the MCP server using stdio transport:
 
@@ -78,7 +90,11 @@ Start the MCP server using stdio transport:
 uv run python src/server.py
 ```
 
-The process blocks on stdin/stdout to communicate with MCP clients.
+Or in SSE (HTTP) mode:
+
+```bash
+MCP_TRANSPORT=sse MCP_PORT=8000 uv run python src/server.py
+```
 
 ---
 

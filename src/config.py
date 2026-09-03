@@ -23,11 +23,7 @@ class Settings(BaseSettings):
 
     # --- Crypto Settings ---
     CRYPTO_ENABLED: bool = True
-
-    # --- Need To Get From Environment Variable ---
-    API_CLIENT_ID: str = ""
     API_SESSION_SECRET: str = ""
-    AUTHORIZATION: str = ""
 
     API_RSA_PUBLIC_KEY: str | None = None
 
