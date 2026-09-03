@@ -41,6 +41,7 @@ HEADER_SOURCE_CHANNEL = "X-SourceChannel"
 # --- Security & Segmentation ---
 HEADER_SECURITY_INFO_PROJECTION = "X-SecurityInfoProjection"
 SECURITY_INFO_PROJECTION_SCRIPT_ID = "scriptId"
+SECURITY_INFO_PROJECTION_SCRIPT_ID_SEGMENT = "scriptId,segment"
 
 # --- Cache & TTL Settings ---
 DEFAULT_CACHE_TTL_SECONDS = 3600

@@ -142,6 +142,32 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+### Antigravity Integration
+
+Milotic is configured as a workspace plugin under `.agents/plugins/milotic/` (or via `.agents/mcp_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "milotic": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/Users/unio/go/src/ds/milotic",
+        "python",
+        "src/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "src"
+      }
+    }
+  }
+}
+```
+
+*For global Antigravity access across all workspaces, merge the `milotic` server block into `~/.gemini/config/mcp_config.json`.*
+
 ---
 
 ## Project Layout

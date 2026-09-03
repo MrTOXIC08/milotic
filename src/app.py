@@ -12,5 +12,7 @@ mcp = FastMCP(
     providers=[
         FileSystemProvider(root=_components / "system", reload=True),
         FileSystemProvider(root=_components / "books", reload=True),
+        FileSystemProvider(root=_components / "research", reload=True),
+        FileSystemProvider(root=_components / "market", reload=True),
     ],
 )
