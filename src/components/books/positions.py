@@ -1,5 +1,7 @@
 """Positions management tools."""
 
+import asyncio
+
 from fastmcp import Context
 from fastmcp.tools import tool
 
@@ -17,14 +19,17 @@ from utils.session import get_session_headers
 async def books_get_positions(
     ctx: Context,
     segment: str = "EQ",
-    position_type: str | None = None,
+    position_type: str = "all",
     interop: bool | None = None,
 ) -> dict:
     """
-    Fetch active intraday and open F&O / commodity derivative positions with live
+    Fetch active intraday and open F&O / commodity / equity positions with live
     Mark-to-Market (MTM) P&L, buy/sell quantities, prices, lot sizes, and security details.
     segment: 'EQ', 'FO', 'COMM', 'CURR' (defaults to 'EQ').
-    position_type: 'daily' or 'expiry' (defaults to 'daily' for EQ/FO/CURR, 'expiry' for COMM).
+    position_type: 'all', 'daily', or 'expiry' (defaults to 'all').
+        - 'all': fetches both intraday ('daily') and carryforward ('expiry') open positions.
+        - 'daily': only positions/trades initiated today during the current trading session.
+        - 'expiry': carryforward open delivery / EMARGIN / F&O positions across expiry cycles.
     interop: Exchange interoperability enabled (defaults to True for EQ/FO, False for COMM).
     """
     seg = segment.strip().upper() if segment else "EQ"
@@ -32,15 +37,53 @@ async def books_get_positions(
     if interop is None:
         interop = seg != "COMM"
 
-    if position_type is None:
-        p_type = "expiry" if seg == "COMM" else "daily"
-    else:
-        p_type = position_type.strip().lower()
+    p_type = position_type.strip().lower() if position_type else "all"
 
     headers = await get_session_headers(ctx)
     headers[HEADER_SECURITY_INFO_PROJECTION] = SECURITY_INFO_PROJECTION_POSITIONS
 
     client = await BaseClient.instance("investor")
+
+    if p_type == "all":
+        res_daily, res_expiry = await asyncio.gather(
+            client.post(
+                "/trading/portfolio/get-positions",
+                json={"interop": interop, "segment": seg, "type": "daily"},
+                headers=headers,
+            ),
+            client.post(
+                "/trading/portfolio/get-positions",
+                json={"interop": interop, "segment": seg, "type": "expiry"},
+                headers=headers,
+            ),
+            return_exceptions=True,
+        )
+
+        daily_data = (
+            res_daily.get("data", [])
+            if isinstance(res_daily, dict) and isinstance(res_daily.get("data"), list)
+            else []
+        )
+        expiry_data = (
+            res_expiry.get("data", [])
+            if isinstance(res_expiry, dict) and isinstance(res_expiry.get("data"), list)
+            else []
+        )
+
+        return {
+            "status": "OK",
+            "statusCode": 200,
+            "data": {
+                "daily": daily_data,
+                "expiry": expiry_data,
+            },
+            "summary": {
+                "dailyCount": len(daily_data),
+                "expiryCount": len(expiry_data),
+                "totalCount": len(daily_data) + len(expiry_data),
+            },
+        }
+
     payload = {
         "interop": interop,
         "segment": seg,
