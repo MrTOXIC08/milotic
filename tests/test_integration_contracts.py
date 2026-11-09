@@ -22,6 +22,7 @@ from components.books.orders import (
     trading_place_order,
 )
 from components.books.portfolio import books_get_portfolio
+from components.books.tradebook import books_get_trade_book
 from components.system.system import system_connect_start, system_connect_verify
 from utils.crypto import MiloticCipher
 
@@ -369,3 +370,69 @@ async def test_contract_get_portfolio(
     sent_request = respx_mock.calls.last.request
     assert sent_request.headers["X-SecurityInfoProjection"] == "scriptId"
     assert sent_request.headers["x-subAccountId"] == "sub-acc-111"
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_get_trade_book(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify /trading/books/get-trade-book POST schema, encrypted payload, and headers."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "statusCode": 200,
+        "status": "OK",
+        "message": "Success",
+        "data": [
+            {
+                "omsOrderId": "20261109054126",
+                "tradeId": "TRD987654",
+                "symbol": "IDEA",
+                "exchange": "NSE",
+                "segment": "EQ",
+                "product": "MTF",
+                "transactionType": "BUY",
+                "tradeQty": 1000,
+                "tradePrice": 7.15,
+                "tradeValue": 7150.0,
+                "tradeExecutionTime": "2026-11-09T09:15:30Z",
+            }
+        ],
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/trading/books/get-trade-book").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(sub_account_id="sub-acc-111")
+    result = await books_get_trade_book(ctx, segment="EQ")
+
+    assert result["statusCode"] == 200
+    assert result["status"] == "OK"
+    assert result["data"][0]["tradeId"] == "TRD987654"
+    assert result["data"][0]["symbol"] == "IDEA"
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-subAccountId"] == "sub-acc-111"
+    assert sent_request.headers["X-API-Encryption-Key"] == "session-header"
+    assert sent_request.headers["x-api-client-id"] == "test-client"
+
+    # Verify that the outgoing request body was encrypted
+    req_body = json.loads(sent_request.content)
+    decrypted_body = test_cipher.decrypt_json(req_body)
+    assert decrypted_body == {
+        "segment": "EQ",
+        "orderDetails": [{"omsOrderId": ""}],
+    }
