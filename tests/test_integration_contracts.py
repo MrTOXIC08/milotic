@@ -22,6 +22,11 @@ from components.books.orders import (
     trading_place_order,
 )
 from components.books.portfolio import books_get_portfolio
+from components.market.charts import (
+    market_get_commodity_chart,
+    market_get_derivatives_chart,
+    market_get_equity_chart,
+)
 from components.system.system import system_connect_start, system_connect_verify
 from utils.crypto import MiloticCipher
 
@@ -369,3 +374,176 @@ async def test_contract_get_portfolio(
     sent_request = respx_mock.calls.last.request
     assert sent_request.headers["X-SecurityInfoProjection"] == "scriptId"
     assert sent_request.headers["x-subAccountId"] == "sub-acc-111"
+
+
+# ---------------------------------------------------------------------------
+# 11. CHARTS CONTRACTS (POST /charts/equity, /charts/derivatives, /charts/commodity)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_charts_equity(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify POST /charts/equity encrypted payload and decrypted candlestick response."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "status": "OK",
+        "response": {
+            "data": {
+                "Stock-Detailedlist": [
+                    {
+                        "Companyname": "CENTRAL DEPOSITORY SERVICES (INDIA) LIMITED",
+                        "DayHigh": "1520.00",
+                        "DayLow": "1480.00",
+                        "DayOpen": "1490.00",
+                        "last_price": "1510.50",
+                    }
+                ]
+            }
+        },
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/charts/equity").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(auth_token="tok-chart", sub_account_id="4433009")
+    result = await market_get_equity_chart(ctx, co_code="20139", period="W", count="1")
+
+    assert result["status"] == "OK"
+    assert "Stock-Detailedlist" in result["response"]["data"]
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-authToken"] == "tok-chart"
+    assert sent_request.headers["x-subAccountId"] == "4433009"
+    assert sent_request.headers["x-api-encryption-key"] == "session-header"
+
+    # Verify encrypted request payload decodes to expected JSON body
+    decrypted_body = test_cipher.decrypt_json(json.loads(sent_request.content))
+    assert decrypted_body == {
+        "exchange": "NSE",
+        "coCode": "20139",
+        "period": "W",
+        "count": "1",
+    }
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_charts_derivatives(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify POST /charts/derivatives encrypted payload and options contract schema."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "status": "OK",
+        "response": {"data": {"candle": [{"close": "295.00"}]}},
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/charts/derivatives").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(auth_token="tok-chart", sub_account_id="4433009")
+    result = await market_get_derivatives_chart(
+        ctx,
+        symbol="BANKNIFTY",
+        expiry_date="10-jan-2024",
+        instrument_type="OPTIDX",
+        opt_type="CE",
+        strike_price="47300",
+        period="D1",
+        sub_account_id="ASX555",
+    )
+
+    assert result["status"] == "OK"
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-subAccountId"] == "ASX555"
+
+    decrypted_body = test_cipher.decrypt_json(json.loads(sent_request.content))
+    assert decrypted_body == {
+        "instrumentType": "OPTIDX",
+        "symbol": "BANKNIFTY",
+        "expiryDate": "10-jan-2024",
+        "period": "D1",
+        "optType": "CE",
+        "strikePrice": "47300",
+    }
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_charts_commodity(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify POST /charts/commodity encrypted payload and commodity contract schema."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "status": "OK",
+        "response": {"data": [{"ltp": "62650"}]},
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/charts/commodity").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(auth_token="tok-chart", sub_account_id="4433009")
+    result = await market_get_commodity_chart(
+        ctx,
+        symbol="gold",
+        expiry_date="05-feb-2024",
+        type="FUT",
+        exchange="MCX",
+        period="d",
+        count="1",
+    )
+
+    assert result["status"] == "OK"
+    sent_request = respx_mock.calls.last.request
+    decrypted_body = test_cipher.decrypt_json(json.loads(sent_request.content))
+    assert decrypted_body == {
+        "type": "FUT",
+        "exchange": "MCX",
+        "symbol": "gold",
+        "expiryDate": "05-feb-2024",
+        "period": "d",
+        "count": "1",
+    }
