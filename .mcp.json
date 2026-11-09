@@ -2,9 +2,15 @@
   "mcpServers": {
     "milotic": {
       "command": "uv",
-      "args": ["run", "python", "src/server.py"],
-      "cwd": "/Users/unio/go/src/ds/milotic",
-      "env": { "PYTHONPATH": "src" }
+      "args": [
+        "run",
+        "python",
+        "src/server.py"
+      ],
+      "cwd": "/Users/as234321/Documents/Blackhole/MCP/milotic",
+      "env": {
+        "PYTHONPATH": "src"
+      }
     }
   }
 }

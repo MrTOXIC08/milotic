@@ -1,0 +1,4543 @@
+{
+  "statusCode": 206,
+  "status": "Partial Content",
+  "error": {
+    "error": "failed to sync mutual fund updates: no data found"
+  },
+  "data": [
+    {
+      "subAccountId": "4433009",
+      "subAccountName": "Direct Transactions",
+      "holdingType": "Equity",
+      "parentTradingId": "4433009",
+      "investmentAmount": "51200.77",
+      "currentAmount": "45984.66",
+      "unrealizedGain": "-5216.11",
+      "unrealizedGainPercentage": "-10.19",
+      "todaysPnl": "-428.86",
+      "todaysPnlChange": "-0.92",
+      "previousDayClosePrice": "46413.52",
+      "holdings": [
+        {
+          "name": "ACC",
+          "isin": "INE012A01025",
+          "quantity": "3",
+          "securityInfo": [
+            {
+              "scriptId": "2222"
+            },
+            {
+              "scriptId": "11500410"
+            }
+          ],
+          "averagePrice": "1771.00",
+          "currentPrice": "1137.40",
+          "investedAmount": "5313.01",
+          "currentAmount": "3412.20",
+          "emarginDate": "2026-10-14T00:00:00+05:30",
+          "unrealizedGain": "-1900.81",
+          "unrealizedGainPercentage": "-35.78",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.13",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 1379.0366,
+              "totalQuantity": 1,
+              "totalMarketValue": 1137.4,
+              "totalUnrealizedGain": -241.63659999999982,
+              "totalUnrealizedGainPerc": -17.522131029734805
+            },
+            "longTerm": {
+              "totalInvestedAmount": 3933.977,
+              "totalQuantity": 2,
+              "totalMarketValue": 2274.8,
+              "totalUnrealizedGain": -1659.1769999999997,
+              "totalUnrealizedGainPerc": -42.17556432078784
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 1379.0366,
+              "totalQuantity": 1,
+              "totalMarketValue": 1137.4,
+              "totalUnrealizedGain": -241.63659999999982,
+              "totalUnrealizedGainPerc": -17.522131029734805
+            },
+            "longTerm": {
+              "totalInvestedAmount": 3933.977,
+              "totalQuantity": 2,
+              "totalMarketValue": 2274.8,
+              "totalUnrealizedGain": -1659.1769999999997,
+              "totalUnrealizedGainPerc": -42.17556432078784
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -20.79
+        },
+        {
+          "name": "Alok Industries",
+          "isin": "INE270A01029",
+          "quantity": "39",
+          "securityInfo": [
+            {
+              "scriptId": "2217675"
+            },
+            {
+              "scriptId": "11521070"
+            }
+          ],
+          "averagePrice": "27.01",
+          "currentPrice": "8.53",
+          "investedAmount": "1053.35",
+          "currentAmount": "332.67",
+          "unrealizedGain": "-720.68",
+          "unrealizedGainPercentage": "-68.42",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-3.72",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1053.3489,
+              "totalQuantity": 39,
+              "totalMarketValue": 332.66999999999996,
+              "totalUnrealizedGain": -720.6789,
+              "totalUnrealizedGainPerc": -68.4178717991731
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1053.3489,
+              "totalQuantity": 39,
+              "totalMarketValue": 332.66999999999996,
+              "totalUnrealizedGain": -720.6789,
+              "totalUnrealizedGainPerc": -68.4178717991731
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -29.33
+        },
+        {
+          "name": "Ambuja Cements",
+          "isin": "INE079A01024",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "221270"
+            },
+            {
+              "scriptId": "11500425"
+            }
+          ],
+          "averagePrice": "632.16",
+          "currentPrice": "350.90",
+          "investedAmount": "632.16",
+          "currentAmount": "350.90",
+          "unrealizedGain": "-281.26",
+          "unrealizedGainPercentage": "-44.49",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.54",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 632.1634,
+              "totalQuantity": 1,
+              "totalMarketValue": 350.9,
+              "totalUnrealizedGain": -281.26340000000005,
+              "totalUnrealizedGainPerc": -44.49219932694617
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 632.1634,
+              "totalQuantity": 1,
+              "totalMarketValue": 350.9,
+              "totalUnrealizedGain": -281.26340000000005,
+              "totalUnrealizedGainPerc": -44.49219932694617
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -16.7
+        },
+        {
+          "name": "B H E L",
+          "isin": "INE257A01026",
+          "quantity": "10",
+          "securityInfo": [
+            {
+              "scriptId": "22438"
+            },
+            {
+              "scriptId": "11500103"
+            }
+          ],
+          "averagePrice": "295.78",
+          "currentPrice": "434.25",
+          "investedAmount": "2957.81",
+          "currentAmount": "4342.50",
+          "unrealizedGain": "1384.69",
+          "unrealizedGainPercentage": "46.81",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-6.41",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 2957.8094,
+              "totalQuantity": 10,
+              "totalMarketValue": 4342.5,
+              "totalUnrealizedGain": 1384.6906,
+              "totalUnrealizedGainPerc": 46.814733904084555
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 15.9
+        },
+        {
+          "name": "B P C L",
+          "isin": "INE029A01011",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22526"
+            },
+            {
+              "scriptId": "11500547"
+            }
+          ],
+          "averagePrice": "313.88",
+          "currentPrice": "293.70",
+          "investedAmount": "313.88",
+          "currentAmount": "293.70",
+          "unrealizedGain": "-20.18",
+          "unrealizedGainPercentage": "-6.43",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.40",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 313.8846,
+              "totalQuantity": 1,
+              "totalMarketValue": 293.7,
+              "totalUnrealizedGain": -20.18459999999999,
+              "totalUnrealizedGainPerc": -6.430579901020946
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 313.8846,
+              "totalQuantity": 1,
+              "totalMarketValue": 293.7,
+              "totalUnrealizedGain": -20.18459999999999,
+              "totalUnrealizedGainPerc": -6.430579901020946
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -7.22
+        },
+        {
+          "name": "Brightcom Group",
+          "isin": "INE425B01027",
+          "quantity": "10",
+          "securityInfo": [
+            {
+              "scriptId": "228833"
+            },
+            {
+              "scriptId": "11532368"
+            }
+          ],
+          "averagePrice": "18.60",
+          "currentPrice": "9.02",
+          "investedAmount": "186.04",
+          "currentAmount": "90.20",
+          "unrealizedGain": "-95.84",
+          "unrealizedGainPercentage": "-51.52",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.77",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 186.04080000000002,
+              "totalQuantity": 10,
+              "totalMarketValue": 90.19999999999997,
+              "totalUnrealizedGain": -95.84080000000002,
+              "totalUnrealizedGainPerc": -51.51601154155433
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 186.04080000000002,
+              "totalQuantity": 10,
+              "totalMarketValue": 90.19999999999997,
+              "totalUnrealizedGain": -95.84080000000002,
+              "totalUnrealizedGainPerc": -51.51601154155433
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -24.08
+        },
+        {
+          "name": "Brooks Lab.",
+          "isin": "INE650L01011",
+          "quantity": "10",
+          "securityInfo": [
+            {
+              "scriptId": "2225136"
+            },
+            {
+              "scriptId": "11533543"
+            }
+          ],
+          "averagePrice": "127.51",
+          "currentPrice": "70.42",
+          "investedAmount": "1275.09",
+          "currentAmount": "704.20",
+          "unrealizedGain": "-570.89",
+          "unrealizedGainPercentage": "-44.77",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "2.47",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1275.09,
+              "totalQuantity": 10,
+              "totalMarketValue": 704.2,
+              "totalUnrealizedGain": -570.8899999999999,
+              "totalUnrealizedGainPerc": -44.772525860919615
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1275.09,
+              "totalQuantity": 10,
+              "totalMarketValue": 704.2,
+              "totalUnrealizedGain": -570.8899999999999,
+              "totalUnrealizedGainPerc": -44.772525860919615
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -27.14
+        },
+        {
+          "name": "Cipla",
+          "isin": "INE059A01026",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "22694"
+            },
+            {
+              "scriptId": "11500087"
+            }
+          ],
+          "averagePrice": "1504.16",
+          "currentPrice": "1328.00",
+          "investedAmount": "3008.32",
+          "currentAmount": "2656.00",
+          "unrealizedGain": "-352.32",
+          "unrealizedGainPercentage": "-11.71",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.02",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 3008.323,
+              "totalQuantity": 2,
+              "totalMarketValue": 2656,
+              "totalUnrealizedGain": -352.32299999999987,
+              "totalUnrealizedGainPerc": -11.71160809527434
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 3008.323,
+              "totalQuantity": 2,
+              "totalMarketValue": 2656,
+              "totalUnrealizedGain": -352.32299999999987,
+              "totalUnrealizedGainPerc": -11.71160809527434
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -9.31
+        },
+        {
+          "name": "Coal India",
+          "isin": "INE522F01014",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2220374"
+            },
+            {
+              "scriptId": "11533278"
+            }
+          ],
+          "averagePrice": "480.62",
+          "currentPrice": "418.00",
+          "investedAmount": "480.62",
+          "currentAmount": "418.00",
+          "unrealizedGain": "-62.62",
+          "unrealizedGainPercentage": "-13.03",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.24",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 480.6163,
+              "totalQuantity": 1,
+              "totalMarketValue": 418,
+              "totalUnrealizedGain": -62.616300000000024,
+              "totalUnrealizedGainPerc": -13.028334661142374
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 480.6163,
+              "totalQuantity": 1,
+              "totalMarketValue": 418,
+              "totalUnrealizedGain": -62.616300000000024,
+              "totalUnrealizedGainPerc": -13.028334661142374
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -27.23
+        },
+        {
+          "name": "Debock Industrie",
+          "isin": "INE411Y01011",
+          "quantity": "9",
+          "securityInfo": [
+            {
+              "scriptId": "88106244"
+            }
+          ],
+          "averagePrice": "7.76",
+          "currentPrice": "0.65",
+          "investedAmount": "69.85",
+          "currentAmount": "5.85",
+          "unrealizedGain": "-64.00",
+          "unrealizedGainPercentage": "-91.62",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-4.41",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 69.8476,
+              "totalQuantity": 9,
+              "totalMarketValue": 5.8500000000000005,
+              "totalUnrealizedGain": -63.9976,
+              "totalUnrealizedGainPerc": -91.62462275010165
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 69.8476,
+              "totalQuantity": 9,
+              "totalMarketValue": 5.8500000000000005,
+              "totalUnrealizedGain": -63.9976,
+              "totalUnrealizedGainPerc": -91.62462275010165
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -64.7
+        },
+        {
+          "name": "Dish TV India",
+          "isin": "INE836F01026",
+          "quantity": "3",
+          "securityInfo": [
+            {
+              "scriptId": "2214537"
+            },
+            {
+              "scriptId": "11532839"
+            }
+          ],
+          "averagePrice": "22.81",
+          "currentPrice": "2.11",
+          "investedAmount": "68.42",
+          "currentAmount": "6.33",
+          "unrealizedGain": "-62.09",
+          "unrealizedGainPercentage": "-90.75",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.93",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 68.4164,
+              "totalQuantity": 3,
+              "totalMarketValue": 6.33,
+              "totalUnrealizedGain": -62.0864,
+              "totalUnrealizedGainPerc": -90.74783239106414
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 68.4164,
+              "totalQuantity": 3,
+              "totalMarketValue": 6.33,
+              "totalUnrealizedGain": -62.0864,
+              "totalUnrealizedGainPerc": -90.74783239106414
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -59.77
+        },
+        {
+          "name": "Easy Trip Plann.",
+          "isin": "INE07O001026",
+          "quantity": "8",
+          "securityInfo": [
+            {
+              "scriptId": "222792"
+            },
+            {
+              "scriptId": "11543272"
+            }
+          ],
+          "averagePrice": "24.00",
+          "currentPrice": "5.75",
+          "investedAmount": "192.03",
+          "currentAmount": "46.00",
+          "unrealizedGain": "-146.03",
+          "unrealizedGainPercentage": "-76.04",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.52",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 192.0263,
+              "totalQuantity": 8,
+              "totalMarketValue": 46,
+              "totalUnrealizedGain": -146.0263,
+              "totalUnrealizedGainPerc": -76.04494800972576
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 192.0263,
+              "totalQuantity": 8,
+              "totalMarketValue": 46,
+              "totalUnrealizedGain": -146.0263,
+              "totalUnrealizedGainPerc": -76.04494800972576
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -49.46
+        },
+        {
+          "name": "Equitas Sma. Fin",
+          "isin": "INE063P01018",
+          "quantity": "3",
+          "securityInfo": [
+            {
+              "scriptId": "22913"
+            },
+            {
+              "scriptId": "11543243"
+            }
+          ],
+          "averagePrice": "97.55",
+          "currentPrice": "68.28",
+          "investedAmount": "292.66",
+          "currentAmount": "204.84",
+          "unrealizedGain": "-87.82",
+          "unrealizedGainPercentage": "-30.01",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.73",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 292.664,
+              "totalQuantity": 3,
+              "totalMarketValue": 204.84,
+              "totalUnrealizedGain": -87.82399999999998,
+              "totalUnrealizedGainPerc": -30.008473881310987
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 292.664,
+              "totalQuantity": 3,
+              "totalMarketValue": 204.84,
+              "totalUnrealizedGain": -87.82399999999998,
+              "totalUnrealizedGainPerc": -30.008473881310987
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -8.87
+        },
+        {
+          "name": "Globe Enterprises",
+          "isin": "INE581X01021",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22393"
+            }
+          ],
+          "averagePrice": "4.84",
+          "currentPrice": "2.02",
+          "investedAmount": "4.84",
+          "currentAmount": "2.02",
+          "unrealizedGain": "-2.82",
+          "unrealizedGainPercentage": "-58.30",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-2.88",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 4.8446,
+              "totalQuantity": 1,
+              "totalMarketValue": 2.02,
+              "totalUnrealizedGain": -2.8245999999999998,
+              "totalUnrealizedGainPerc": -58.30409115303637
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 4.8446,
+              "totalQuantity": 1,
+              "totalMarketValue": 2.02,
+              "totalUnrealizedGain": -2.8245999999999998,
+              "totalUnrealizedGainPerc": -58.30409115303637
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -28.94
+        },
+        {
+          "name": "Hindalco Inds.",
+          "isin": "INE038A01020",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "221363"
+            },
+            {
+              "scriptId": "11500440"
+            }
+          ],
+          "averagePrice": "649.70",
+          "currentPrice": "893.85",
+          "investedAmount": "1299.39",
+          "currentAmount": "1787.70",
+          "unrealizedGain": "488.31",
+          "unrealizedGainPercentage": "37.58",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.29",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1299.3908000000001,
+              "totalQuantity": 2,
+              "totalMarketValue": 1787.7,
+              "totalUnrealizedGain": 488.30920000000003,
+              "totalUnrealizedGainPerc": 37.579856652825306
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 29.2
+        },
+        {
+          "name": "ICICI PNM 150",
+          "isin": "INF109KC11W8",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2217152"
+            }
+          ],
+          "averagePrice": "18.73",
+          "currentPrice": "22.53",
+          "investedAmount": "18.73",
+          "currentAmount": "22.53",
+          "unrealizedGain": "3.80",
+          "unrealizedGainPercentage": "20.29",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.31",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 18.73,
+              "totalQuantity": 1,
+              "totalMarketValue": 22.53,
+              "totalUnrealizedGain": 3.8000000000000007,
+              "totalUnrealizedGainPerc": 20.288307528029904
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 19.1
+        },
+        {
+          "name": "IDFC First Bank",
+          "isin": "INE092T01019",
+          "quantity": "11",
+          "securityInfo": [
+            {
+              "scriptId": "2211184"
+            },
+            {
+              "scriptId": "11539437"
+            }
+          ],
+          "averagePrice": "72.47",
+          "currentPrice": "79.07",
+          "investedAmount": "797.14",
+          "currentAmount": "869.77",
+          "unrealizedGain": "72.63",
+          "unrealizedGainPercentage": "9.11",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.42",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 797.1428000000001,
+              "totalQuantity": 11,
+              "totalMarketValue": 869.7699999999998,
+              "totalUnrealizedGain": 72.62719999999987,
+              "totalUnrealizedGainPerc": 9.1109397212143
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 2.42
+        },
+        {
+          "name": "JP Power Ven.",
+          "isin": "INE351F01018",
+          "quantity": "6",
+          "securityInfo": [
+            {
+              "scriptId": "2211763"
+            },
+            {
+              "scriptId": "11532627"
+            }
+          ],
+          "averagePrice": "20.50",
+          "currentPrice": "14.90",
+          "investedAmount": "123.03",
+          "currentAmount": "89.40",
+          "unrealizedGain": "-33.63",
+          "unrealizedGainPercentage": "-27.33",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-3.43",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 123.0294,
+              "totalQuantity": 6,
+              "totalMarketValue": 89.4,
+              "totalUnrealizedGain": -33.6294,
+              "totalUnrealizedGainPerc": -27.33444201142166
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 123.0294,
+              "totalQuantity": 6,
+              "totalMarketValue": 89.4,
+              "totalUnrealizedGain": -33.6294,
+              "totalUnrealizedGainPerc": -27.33444201142166
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -8.28
+        },
+        {
+          "name": "JSW Energy",
+          "isin": "INE121E01018",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "2217869"
+            },
+            {
+              "scriptId": "11533148"
+            }
+          ],
+          "averagePrice": "640.49",
+          "currentPrice": "478.95",
+          "investedAmount": "1280.98",
+          "currentAmount": "957.90",
+          "unrealizedGain": "-323.08",
+          "unrealizedGainPercentage": "-25.22",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-2.31",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1280.9829,
+              "totalQuantity": 2,
+              "totalMarketValue": 957.9,
+              "totalUnrealizedGain": -323.0829,
+              "totalUnrealizedGainPerc": -25.221484221217942
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1280.9829,
+              "totalQuantity": 2,
+              "totalMarketValue": 957.9,
+              "totalUnrealizedGain": -323.0829,
+              "totalUnrealizedGainPerc": -25.221484221217942
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -8.81
+        },
+        {
+          "name": "JSW Steel",
+          "isin": "INE019A01038",
+          "quantity": "4",
+          "securityInfo": [
+            {
+              "scriptId": "2211723"
+            },
+            {
+              "scriptId": "11500228"
+            }
+          ],
+          "averagePrice": "932.17",
+          "currentPrice": "1200.40",
+          "investedAmount": "3728.69",
+          "currentAmount": "4801.60",
+          "unrealizedGain": "1072.91",
+          "unrealizedGainPercentage": "28.77",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "2.06",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 3728.6877,
+              "totalQuantity": 4,
+              "totalMarketValue": 4801.6,
+              "totalUnrealizedGain": 1072.9123000000004,
+              "totalUnrealizedGainPerc": 28.774528368251396
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 16.13
+        },
+        {
+          "name": "Kanani Industrie",
+          "isin": "INE879E01037",
+          "quantity": "6",
+          "securityInfo": [
+            {
+              "scriptId": "2225786"
+            },
+            {
+              "scriptId": "11506184"
+            }
+          ],
+          "averagePrice": "4.24",
+          "currentPrice": "1.32",
+          "investedAmount": "25.43",
+          "currentAmount": "7.92",
+          "unrealizedGain": "-17.51",
+          "unrealizedGainPercentage": "-68.86",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.49",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 25.4338,
+              "totalQuantity": 6,
+              "totalMarketValue": 7.920000000000001,
+              "totalUnrealizedGain": -17.5138,
+              "totalUnrealizedGainPerc": -68.86033545911346
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 25.4338,
+              "totalQuantity": 6,
+              "totalMarketValue": 7.920000000000001,
+              "totalUnrealizedGain": -17.5138,
+              "totalUnrealizedGainPerc": -68.86033545911346
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -35.07
+        },
+        {
+          "name": "NHPC Ltd",
+          "isin": "INE848E01016",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "2217400"
+            },
+            {
+              "scriptId": "11533098"
+            }
+          ],
+          "averagePrice": "97.50",
+          "currentPrice": "72.70",
+          "investedAmount": "195.00",
+          "currentAmount": "145.40",
+          "unrealizedGain": "-49.60",
+          "unrealizedGainPercentage": "-25.44",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.38",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 194.9993,
+              "totalQuantity": 2,
+              "totalMarketValue": 145.4,
+              "totalUnrealizedGain": -49.5993,
+              "totalUnrealizedGainPerc": -25.435629768927377
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 194.9993,
+              "totalQuantity": 2,
+              "totalMarketValue": 145.4,
+              "totalUnrealizedGain": -49.5993,
+              "totalUnrealizedGainPerc": -25.435629768927377
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -11.02
+        },
+        {
+          "name": "Nip. India Nifty",
+          "isin": "INF204KB14I2",
+          "quantity": "4",
+          "securityInfo": [
+            {
+              "scriptId": "2210576"
+            },
+            {
+              "scriptId": "11590103"
+            }
+          ],
+          "averagePrice": "264.26",
+          "currentPrice": "261.51",
+          "investedAmount": "1057.03",
+          "currentAmount": "1046.04",
+          "unrealizedGain": "-10.99",
+          "unrealizedGainPercentage": "-1.04",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.45",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1057.03,
+              "totalQuantity": 4,
+              "totalMarketValue": 1046.04,
+              "totalUnrealizedGain": -10.990000000000038,
+              "totalUnrealizedGainPerc": -1.039705590191389
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1057.03,
+              "totalQuantity": 4,
+              "totalMarketValue": 1046.04,
+              "totalUnrealizedGain": -10.990000000000038,
+              "totalUnrealizedGainPerc": -1.039705590191389
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 1.71
+        },
+        {
+          "name": "Nippon ETF Liq.",
+          "isin": "INF732E01037",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2211006"
+            },
+            {
+              "scriptId": "11590096"
+            }
+          ],
+          "averagePrice": "1029.69",
+          "currentPrice": "1000.00",
+          "investedAmount": "1029.69",
+          "currentAmount": "1000.00",
+          "unrealizedGain": "-29.69",
+          "unrealizedGainPercentage": "-2.88",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.00",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1029.69,
+              "totalQuantity": 1,
+              "totalMarketValue": 1000,
+              "totalUnrealizedGain": -29.690000000000055,
+              "totalUnrealizedGainPerc": -2.8833920888811244
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1029.69,
+              "totalQuantity": 1,
+              "totalMarketValue": 1000,
+              "totalUnrealizedGain": -29.690000000000055,
+              "totalUnrealizedGainPerc": -2.8833920888811244
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -1.28
+        },
+        {
+          "name": "Nippon India Nif",
+          "isin": "INF204KC1089",
+          "quantity": "32",
+          "securityInfo": [
+            {
+              "scriptId": "224973"
+            },
+            {
+              "scriptId": "11590142"
+            }
+          ],
+          "averagePrice": "21.55",
+          "currentPrice": "26.54",
+          "investedAmount": "689.71",
+          "currentAmount": "849.28",
+          "unrealizedGain": "159.57",
+          "unrealizedGainPercentage": "23.14",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.57",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 689.7099999999998,
+              "totalQuantity": 32,
+              "totalMarketValue": 849.2800000000002,
+              "totalUnrealizedGain": 159.57000000000005,
+              "totalUnrealizedGainPerc": 23.13581070304912
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 12.91
+        },
+        {
+          "name": "Nippon Nifty IT",
+          "isin": "INF204KB15V2",
+          "quantity": "6",
+          "securityInfo": [
+            {
+              "scriptId": "2219084"
+            }
+          ],
+          "averagePrice": "41.45",
+          "currentPrice": "34.12",
+          "investedAmount": "248.71",
+          "currentAmount": "204.72",
+          "unrealizedGain": "-43.99",
+          "unrealizedGainPercentage": "-17.69",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.61",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 248.70999999999998,
+              "totalQuantity": 6,
+              "totalMarketValue": 204.71999999999997,
+              "totalUnrealizedGain": -43.99000000000002,
+              "totalUnrealizedGainPerc": -17.68726629407745
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 248.70999999999998,
+              "totalQuantity": 6,
+              "totalMarketValue": 204.71999999999997,
+              "totalUnrealizedGain": -43.99000000000002,
+              "totalUnrealizedGainPerc": -17.68726629407745
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -12.81
+        },
+        {
+          "name": "NTPC",
+          "isin": "INE733E01010",
+          "quantity": "7",
+          "securityInfo": [
+            {
+              "scriptId": "2211630"
+            },
+            {
+              "scriptId": "11532555"
+            }
+          ],
+          "averagePrice": "405.99",
+          "currentPrice": "314.65",
+          "investedAmount": "2841.94",
+          "currentAmount": "2202.55",
+          "unrealizedGain": "-639.39",
+          "unrealizedGainPercentage": "-22.50",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.30",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 2841.9393,
+              "totalQuantity": 7,
+              "totalMarketValue": 2202.55,
+              "totalUnrealizedGain": -639.3893,
+              "totalUnrealizedGainPerc": -22.49834470426585
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 2841.9393,
+              "totalQuantity": 7,
+              "totalMarketValue": 2202.55,
+              "totalUnrealizedGain": -639.3893,
+              "totalUnrealizedGainPerc": -22.49834470426585
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -17.3
+        },
+        {
+          "name": "O N G C",
+          "isin": "INE213A01029",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "222475"
+            },
+            {
+              "scriptId": "11500312"
+            }
+          ],
+          "averagePrice": "292.99",
+          "currentPrice": "224.64",
+          "investedAmount": "585.98",
+          "currentAmount": "449.28",
+          "unrealizedGain": "-136.70",
+          "unrealizedGainPercentage": "-23.33",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.38",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 585.98,
+              "totalQuantity": 2,
+              "totalMarketValue": 449.28,
+              "totalUnrealizedGain": -136.7,
+              "totalUnrealizedGainPerc": -23.328441243728452
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 585.98,
+              "totalQuantity": 2,
+              "totalMarketValue": 449.28,
+              "totalUnrealizedGain": -136.7,
+              "totalUnrealizedGainPerc": -23.328441243728452
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -35.04
+        },
+        {
+          "name": "Power Grid Corpn",
+          "isin": "INE752E01010",
+          "quantity": "3",
+          "securityInfo": [
+            {
+              "scriptId": "2214977"
+            },
+            {
+              "scriptId": "11532898"
+            }
+          ],
+          "averagePrice": "322.59",
+          "currentPrice": "249.85",
+          "investedAmount": "967.76",
+          "currentAmount": "749.55",
+          "unrealizedGain": "-218.21",
+          "unrealizedGainPercentage": "-22.55",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.36",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 967.7579000000001,
+              "totalQuantity": 3,
+              "totalMarketValue": 749.55,
+              "totalUnrealizedGain": -218.20790000000002,
+              "totalUnrealizedGainPerc": -22.547777703493818
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 967.7579000000001,
+              "totalQuantity": 3,
+              "totalMarketValue": 749.55,
+              "totalUnrealizedGain": -218.20790000000002,
+              "totalUnrealizedGainPerc": -22.547777703493818
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -14.1
+        },
+        {
+          "name": "Rajnandini Metal",
+          "isin": "INE00KV01022",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "222168"
+            }
+          ],
+          "averagePrice": "11.91",
+          "currentPrice": "3.01",
+          "investedAmount": "11.91",
+          "currentAmount": "3.01",
+          "unrealizedGain": "-8.90",
+          "unrealizedGainPercentage": "-74.73",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.33",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 11.9116,
+              "totalQuantity": 1,
+              "totalMarketValue": 3.01,
+              "totalUnrealizedGain": -8.9016,
+              "totalUnrealizedGainPerc": -74.73051479230331
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 11.9116,
+              "totalQuantity": 1,
+              "totalMarketValue": 3.01,
+              "totalUnrealizedGain": -8.9016,
+              "totalUnrealizedGainPerc": -74.73051479230331
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -42.85
+        },
+        {
+          "name": "SBFC Finance",
+          "isin": "INE423Y01016",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2218026"
+            },
+            {
+              "scriptId": "11543959"
+            }
+          ],
+          "averagePrice": "84.83",
+          "currentPrice": "87.64",
+          "investedAmount": "84.83",
+          "currentAmount": "87.64",
+          "unrealizedGain": "2.81",
+          "unrealizedGainPercentage": "3.31",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.52",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 84.8323,
+              "totalQuantity": 1,
+              "totalMarketValue": 87.64,
+              "totalUnrealizedGain": 2.807699999999997,
+              "totalUnrealizedGainPerc": 3.3097063264817725
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -4.84
+        },
+        {
+          "name": "South Ind.Bank",
+          "isin": "INE683A01023",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "225948"
+            },
+            {
+              "scriptId": "11532218"
+            }
+          ],
+          "averagePrice": "24.28",
+          "currentPrice": "51.48",
+          "investedAmount": "48.57",
+          "currentAmount": "102.96",
+          "unrealizedGain": "54.39",
+          "unrealizedGainPercentage": "111.99",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "3.71",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 48.5686,
+              "totalQuantity": 2,
+              "totalMarketValue": 102.96,
+              "totalUnrealizedGain": 54.39139999999999,
+              "totalUnrealizedGainPerc": 111.98881581927415
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 37
+        },
+        {
+          "name": "Suryoday Small",
+          "isin": "INE428Q01011",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "222970"
+            },
+            {
+              "scriptId": "11543279"
+            }
+          ],
+          "averagePrice": "168.89",
+          "currentPrice": "147.77",
+          "investedAmount": "168.89",
+          "currentAmount": "147.77",
+          "unrealizedGain": "-21.12",
+          "unrealizedGainPercentage": "-12.50",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.35",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 168.8891,
+              "totalQuantity": 1,
+              "totalMarketValue": 147.77,
+              "totalUnrealizedGain": -21.119100000000003,
+              "totalUnrealizedGainPerc": -12.504714632264605
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 168.8891,
+              "totalQuantity": 1,
+              "totalMarketValue": 147.77,
+              "totalUnrealizedGain": -21.119100000000003,
+              "totalUnrealizedGainPerc": -12.504714632264605
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 124.54
+        },
+        {
+          "name": "Suzlon Energy",
+          "isin": "INE040H01021",
+          "quantity": "18",
+          "securityInfo": [
+            {
+              "scriptId": "2212018"
+            },
+            {
+              "scriptId": "11532667"
+            }
+          ],
+          "averagePrice": "56.73",
+          "currentPrice": "40.95",
+          "investedAmount": "1021.17",
+          "currentAmount": "737.10",
+          "unrealizedGain": "-284.07",
+          "unrealizedGainPercentage": "-27.82",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.37",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1021.1709,
+              "totalQuantity": 18,
+              "totalMarketValue": 737.1,
+              "totalUnrealizedGain": -284.07089999999994,
+              "totalUnrealizedGainPerc": -27.818154630140747
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1021.1709,
+              "totalQuantity": 18,
+              "totalMarketValue": 737.1,
+              "totalUnrealizedGain": -284.07089999999994,
+              "totalUnrealizedGainPerc": -27.818154630140747
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -1.44
+        },
+        {
+          "name": "Tata Gold ETF",
+          "isin": "INF277KA1976",
+          "quantity": "18",
+          "securityInfo": [
+            {
+              "scriptId": "2221401"
+            }
+          ],
+          "averagePrice": "7.41",
+          "currentPrice": "14.08",
+          "investedAmount": "133.45",
+          "currentAmount": "253.44",
+          "unrealizedGain": "119.99",
+          "unrealizedGainPercentage": "89.92",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.07",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 133.4488,
+              "totalQuantity": 18,
+              "totalMarketValue": 253.4400000000001,
+              "totalUnrealizedGain": 119.99119999999998,
+              "totalUnrealizedGainPerc": 89.91553314829356
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 34.03
+        },
+        {
+          "name": "Tata Power Co.",
+          "isin": "INE245A01021",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "223426"
+            },
+            {
+              "scriptId": "11500400"
+            }
+          ],
+          "averagePrice": "457.07",
+          "currentPrice": "349.80",
+          "investedAmount": "914.14",
+          "currentAmount": "699.60",
+          "unrealizedGain": "-214.54",
+          "unrealizedGainPercentage": "-23.47",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.91",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 914.1369,
+              "totalQuantity": 2,
+              "totalMarketValue": 699.6,
+              "totalUnrealizedGain": -214.53689999999995,
+              "totalUnrealizedGainPerc": -23.468793350317654
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 914.1369,
+              "totalQuantity": 2,
+              "totalMarketValue": 699.6,
+              "totalUnrealizedGain": -214.53689999999995,
+              "totalUnrealizedGainPerc": -23.468793350317654
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -13.83
+        },
+        {
+          "name": "Tata Steel",
+          "isin": "INE081A01020",
+          "quantity": "13",
+          "securityInfo": [
+            {
+              "scriptId": "223499"
+            },
+            {
+              "scriptId": "11500470"
+            }
+          ],
+          "averagePrice": "152.79",
+          "currentPrice": "176.40",
+          "investedAmount": "1986.31",
+          "currentAmount": "2293.20",
+          "unrealizedGain": "306.89",
+          "unrealizedGainPercentage": "15.45",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "1.09",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1986.308,
+              "totalQuantity": 13,
+              "totalMarketValue": 2293.2000000000003,
+              "totalUnrealizedGain": 306.892,
+              "totalUnrealizedGainPerc": 15.450373255305824
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -5.02
+        },
+        {
+          "name": "Tijaria Polypipe",
+          "isin": "INE440L01017",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2225486"
+            },
+            {
+              "scriptId": "11533629"
+            }
+          ],
+          "averagePrice": "25.10",
+          "currentPrice": "5.72",
+          "investedAmount": "25.10",
+          "currentAmount": "5.72",
+          "unrealizedGain": "-19.38",
+          "unrealizedGainPercentage": "-77.22",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.55",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 25.1044,
+              "totalQuantity": 1,
+              "totalMarketValue": 5.72,
+              "totalUnrealizedGain": -19.3844,
+              "totalUnrealizedGainPerc": -77.21514953553958
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 25.1044,
+              "totalQuantity": 1,
+              "totalMarketValue": 5.72,
+              "totalUnrealizedGain": -19.3844,
+              "totalUnrealizedGainPerc": -77.21514953553958
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -57.29
+        },
+        {
+          "name": "TRF",
+          "isin": "INE391D01019",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2217987"
+            },
+            {
+              "scriptId": "11505854"
+            }
+          ],
+          "averagePrice": "586.98",
+          "currentPrice": "220.43",
+          "investedAmount": "586.98",
+          "currentAmount": "220.43",
+          "unrealizedGain": "-366.55",
+          "unrealizedGainPercentage": "-62.45",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-4.25",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 586.9795,
+              "totalQuantity": 1,
+              "totalMarketValue": 220.43,
+              "totalUnrealizedGain": -366.5495,
+              "totalUnrealizedGainPerc": -62.446729400260146
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 586.9795,
+              "totalQuantity": 1,
+              "totalMarketValue": 220.43,
+              "totalUnrealizedGain": -366.5495,
+              "totalUnrealizedGainPerc": -62.446729400260146
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -31.74
+        },
+        {
+          "name": "Trident",
+          "isin": "INE064C01022",
+          "quantity": "153",
+          "securityInfo": [
+            {
+              "scriptId": "229685"
+            },
+            {
+              "scriptId": "11521064"
+            }
+          ],
+          "averagePrice": "37.75",
+          "currentPrice": "22.09",
+          "investedAmount": "5775.35",
+          "currentAmount": "3379.77",
+          "unrealizedGain": "-2395.58",
+          "unrealizedGainPercentage": "-41.48",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.03",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 5775.349199999997,
+              "totalQuantity": 153,
+              "totalMarketValue": 3379.770000000001,
+              "totalUnrealizedGain": -2395.579199999999,
+              "totalUnrealizedGainPerc": -41.479382753167556
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 5775.349199999997,
+              "totalQuantity": 153,
+              "totalMarketValue": 3379.770000000001,
+              "totalUnrealizedGain": -2395.579199999999,
+              "totalUnrealizedGainPerc": -41.479382753167556
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -20.72
+        },
+        {
+          "name": "Trident Texofab",
+          "isin": "INE071Y01013",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "11540726"
+            }
+          ],
+          "averagePrice": "52.54",
+          "currentPrice": "19.49",
+          "investedAmount": "105.08",
+          "currentAmount": "38.98",
+          "unrealizedGain": "-66.10",
+          "unrealizedGainPercentage": "-62.91",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.52",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 105.082,
+              "totalQuantity": 2,
+              "totalMarketValue": 38.98,
+              "totalUnrealizedGain": -66.102,
+              "totalUnrealizedGainPerc": -62.90515977998135
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 105.082,
+              "totalQuantity": 2,
+              "totalMarketValue": 38.98,
+              "totalUnrealizedGain": -66.102,
+              "totalUnrealizedGainPerc": -62.90515977998135
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -19.41
+        },
+        {
+          "name": "Ujjivan Small",
+          "isin": "INE551W01018",
+          "quantity": "6",
+          "securityInfo": [
+            {
+              "scriptId": "2215228"
+            },
+            {
+              "scriptId": "11542904"
+            }
+          ],
+          "averagePrice": "34.21",
+          "currentPrice": "64.50",
+          "investedAmount": "205.28",
+          "currentAmount": "387.00",
+          "unrealizedGain": "181.72",
+          "unrealizedGainPercentage": "88.52",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-0.98",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 205.2792,
+              "totalQuantity": 6,
+              "totalMarketValue": 387,
+              "totalUnrealizedGain": 181.7208,
+              "totalUnrealizedGainPerc": 88.52372768405176
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 50.93
+        },
+        {
+          "name": "Unitech",
+          "isin": "INE694A01020",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "223594"
+            },
+            {
+              "scriptId": "11507878"
+            }
+          ],
+          "averagePrice": "13.81",
+          "currentPrice": "3.97",
+          "investedAmount": "27.62",
+          "currentAmount": "7.94",
+          "unrealizedGain": "-19.68",
+          "unrealizedGainPercentage": "-71.25",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.00",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 27.6168,
+              "totalQuantity": 2,
+              "totalMarketValue": 7.94,
+              "totalUnrealizedGain": -19.6768,
+              "totalUnrealizedGainPerc": -71.24938443266417
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 27.6168,
+              "totalQuantity": 2,
+              "totalMarketValue": 7.94,
+              "totalUnrealizedGain": -19.6768,
+              "totalUnrealizedGainPerc": -71.24938443266417
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -38.6
+        },
+        {
+          "name": "Urja Global",
+          "isin": "INE550C01020",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "2220203"
+            },
+            {
+              "scriptId": "11526987"
+            }
+          ],
+          "averagePrice": "21.90",
+          "currentPrice": "8.39",
+          "investedAmount": "21.90",
+          "currentAmount": "8.39",
+          "unrealizedGain": "-13.51",
+          "unrealizedGainPercentage": "-61.69",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.29",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 21.9013,
+              "totalQuantity": 1,
+              "totalMarketValue": 8.39,
+              "totalUnrealizedGain": -13.511299999999999,
+              "totalUnrealizedGainPerc": -61.69177172131334
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 21.9013,
+              "totalQuantity": 1,
+              "totalMarketValue": 8.39,
+              "totalUnrealizedGain": -13.511299999999999,
+              "totalUnrealizedGainPerc": -61.69177172131334
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -32.15
+        },
+        {
+          "name": "UTI Silver ETF",
+          "isin": "INF789F1AYK6",
+          "quantity": "5",
+          "securityInfo": [
+            {
+              "scriptId": "2215085"
+            },
+            {
+              "scriptId": "11543900"
+            }
+          ],
+          "averagePrice": "92.53",
+          "currentPrice": "199.26",
+          "investedAmount": "462.63",
+          "currentAmount": "996.30",
+          "unrealizedGain": "533.67",
+          "unrealizedGainPercentage": "115.36",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-2.63",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 462.63,
+              "totalQuantity": 5,
+              "totalMarketValue": 996.3,
+              "totalUnrealizedGain": 533.67,
+              "totalUnrealizedGainPerc": 115.35568380779455
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 49.53
+        },
+        {
+          "name": "Vedanta",
+          "isin": "INE205A01025",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "223063"
+            },
+            {
+              "scriptId": "11500295"
+            }
+          ],
+          "averagePrice": "235.71",
+          "currentPrice": "245.90",
+          "investedAmount": "235.71",
+          "currentAmount": "245.90",
+          "unrealizedGain": "10.19",
+          "unrealizedGainPercentage": "4.32",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.64",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 235.7116,
+              "totalQuantity": 1,
+              "totalMarketValue": 245.9,
+              "totalUnrealizedGain": 10.188400000000001,
+              "totalUnrealizedGainPerc": 4.322400764323861
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -6.21
+        },
+        {
+          "name": "Vedanta Aluminium Metal",
+          "isin": "INE1CDF01017",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22750174"
+            },
+            {
+              "scriptId": "11544780"
+            }
+          ],
+          "averagePrice": "32.20",
+          "currentPrice": "359.55",
+          "investedAmount": "32.20",
+          "currentAmount": "359.55",
+          "unrealizedGain": "327.35",
+          "unrealizedGainPercentage": "1016.62",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-2.18",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 32.1998,
+              "totalQuantity": 1,
+              "totalMarketValue": 359.55,
+              "totalUnrealizedGain": 327.35020000000003,
+              "totalUnrealizedGainPerc": 1016.6218423716919
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 263.73
+        },
+        {
+          "name": "Vedanta Iron & Steel",
+          "isin": "INE1CLE01013",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22750290"
+            },
+            {
+              "scriptId": "11544784"
+            }
+          ],
+          "averagePrice": "30.58",
+          "currentPrice": "29.32",
+          "investedAmount": "30.58",
+          "currentAmount": "29.32",
+          "unrealizedGain": "-1.26",
+          "unrealizedGainPercentage": "-4.12",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-2.72",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 30.5786,
+              "totalQuantity": 1,
+              "totalMarketValue": 29.32,
+              "totalUnrealizedGain": -1.2586000000000013,
+              "totalUnrealizedGainPerc": -4.115950370520564
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 30.5786,
+              "totalQuantity": 1,
+              "totalMarketValue": 29.32,
+              "totalUnrealizedGain": -1.2586000000000013,
+              "totalUnrealizedGainPerc": -4.115950370520564
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 8.07
+        },
+        {
+          "name": "Vedanta Oil and Gas",
+          "isin": "INE704J01044",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22750368"
+            },
+            {
+              "scriptId": "11544782"
+            }
+          ],
+          "averagePrice": "96.78",
+          "currentPrice": "31.56",
+          "investedAmount": "96.78",
+          "currentAmount": "31.56",
+          "unrealizedGain": "-65.22",
+          "unrealizedGainPercentage": "-67.39",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-3.57",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 96.7796,
+              "totalQuantity": 1,
+              "totalMarketValue": 31.56,
+              "totalUnrealizedGain": -65.2196,
+              "totalUnrealizedGainPerc": -67.38982182195421
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 96.7796,
+              "totalQuantity": 1,
+              "totalMarketValue": 31.56,
+              "totalUnrealizedGain": -65.2196,
+              "totalUnrealizedGainPerc": -67.38982182195421
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -36.77
+        },
+        {
+          "name": "Vedanta Power",
+          "isin": "INE694L01019",
+          "quantity": "1",
+          "securityInfo": [
+            {
+              "scriptId": "22750518"
+            },
+            {
+              "scriptId": "11544781"
+            }
+          ],
+          "averagePrice": "55.08",
+          "currentPrice": "32.53",
+          "investedAmount": "55.08",
+          "currentAmount": "32.53",
+          "unrealizedGain": "-22.55",
+          "unrealizedGainPercentage": "-40.94",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-4.69",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 55.0774,
+              "totalQuantity": 1,
+              "totalMarketValue": 32.53,
+              "totalUnrealizedGain": -22.547399999999996,
+              "totalUnrealizedGainPerc": -40.93766227163954
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 55.0774,
+              "totalQuantity": 1,
+              "totalMarketValue": 32.53,
+              "totalUnrealizedGain": -22.547399999999996,
+              "totalUnrealizedGainPerc": -40.93766227163954
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -13.84
+        },
+        {
+          "name": "Vikas Ecotech",
+          "isin": "INE806A01020",
+          "quantity": "2",
+          "securityInfo": [
+            {
+              "scriptId": "2225756"
+            },
+            {
+              "scriptId": "11530961"
+            }
+          ],
+          "averagePrice": "5.37",
+          "currentPrice": "1.03",
+          "investedAmount": "10.74",
+          "currentAmount": "2.06",
+          "unrealizedGain": "-8.68",
+          "unrealizedGainPercentage": "-80.82",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "0.98",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 10.7402,
+              "totalQuantity": 2,
+              "totalMarketValue": 2.06,
+              "totalUnrealizedGain": -8.6802,
+              "totalUnrealizedGainPerc": -80.81972402748552
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 10.7402,
+              "totalQuantity": 2,
+              "totalMarketValue": 2.06,
+              "totalUnrealizedGain": -8.6802,
+              "totalUnrealizedGainPerc": -80.81972402748552
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -45.64
+        },
+        {
+          "name": "Vodafone Idea",
+          "isin": "INE669E01016",
+          "quantity": "556",
+          "securityInfo": [
+            {
+              "scriptId": "2214366"
+            },
+            {
+              "scriptId": "11532822"
+            }
+          ],
+          "averagePrice": "12.85",
+          "currentPrice": "12.52",
+          "investedAmount": "7112.89",
+          "currentAmount": "6961.12",
+          "emarginDate": "2026-10-14T00:00:00+05:30",
+          "unrealizedGain": "-151.77",
+          "unrealizedGainPercentage": "-2.13",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.18",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 336.8761,
+              "totalQuantity": 32,
+              "totalMarketValue": 400.6400000000001,
+              "totalUnrealizedGain": 63.763899999999964,
+              "totalUnrealizedGainPerc": 18.927997563495886
+            },
+            "longTerm": {
+              "totalInvestedAmount": 6776.013199999999,
+              "totalQuantity": 524,
+              "totalMarketValue": 6560.480000000026,
+              "totalUnrealizedGain": -215.53320000000014,
+              "totalUnrealizedGainPerc": -3.1808261530541317
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 6776.013199999999,
+              "totalQuantity": 524,
+              "totalMarketValue": 6560.480000000026,
+              "totalUnrealizedGain": -215.53320000000014,
+              "totalUnrealizedGainPerc": -3.1808261530541317
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": 1.86
+        },
+        {
+          "name": "Yes Bank",
+          "isin": "INE528G01035",
+          "quantity": "46",
+          "securityInfo": [
+            {
+              "scriptId": "2211915"
+            },
+            {
+              "scriptId": "11532648"
+            }
+          ],
+          "averagePrice": "25.51",
+          "currentPrice": "18.12",
+          "investedAmount": "1173.47",
+          "currentAmount": "833.52",
+          "unrealizedGain": "-339.95",
+          "unrealizedGainPercentage": "-28.97",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-14.53",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 22.6827,
+              "totalQuantity": 1,
+              "totalMarketValue": 18.12,
+              "totalUnrealizedGain": -4.5626999999999995,
+              "totalUnrealizedGainPerc": -20.11533018555992
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1150.7827999999997,
+              "totalQuantity": 45,
+              "totalMarketValue": 815.4000000000001,
+              "totalUnrealizedGain": -335.3828,
+              "totalUnrealizedGainPerc": -29.143883624259942
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 22.6827,
+              "totalQuantity": 1,
+              "totalMarketValue": 18.12,
+              "totalUnrealizedGain": -4.5626999999999995,
+              "totalUnrealizedGainPerc": -20.11533018555992
+            },
+            "longTerm": {
+              "totalInvestedAmount": 1150.7827999999997,
+              "totalQuantity": 45,
+              "totalMarketValue": 815.4000000000001,
+              "totalUnrealizedGain": -335.3828,
+              "totalUnrealizedGainPerc": -29.143883624259942
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -6.28
+        },
+        {
+          "name": "Zee Media",
+          "isin": "INE966H01019",
+          "quantity": "10",
+          "securityInfo": [
+            {
+              "scriptId": "2214006"
+            },
+            {
+              "scriptId": "11532794"
+            }
+          ],
+          "averagePrice": "13.68",
+          "currentPrice": "7.08",
+          "investedAmount": "136.82",
+          "currentAmount": "70.80",
+          "unrealizedGain": "-66.02",
+          "unrealizedGainPercentage": "-48.25",
+          "todaysPnl": "0.00",
+          "todaysPnlChange": "-1.12",
+          "previousDayClosePrice": "0.00",
+          "unrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 136.8231,
+              "totalQuantity": 10,
+              "totalMarketValue": 70.8,
+              "totalUnrealizedGain": -66.0231,
+              "totalUnrealizedGainPerc": -48.25435178708858
+            }
+          },
+          "realizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxRealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalRealizedGain": 0,
+              "totalRealizedGainPerc": 0
+            }
+          },
+          "taxUnrealizedSummary": {
+            "shortTerm": {
+              "totalInvestedAmount": 0,
+              "totalQuantity": 0,
+              "totalMarketValue": 0,
+              "totalUnrealizedGain": 0,
+              "totalUnrealizedGainPerc": 0
+            },
+            "longTerm": {
+              "totalInvestedAmount": 136.8231,
+              "totalQuantity": 10,
+              "totalMarketValue": 70.8,
+              "totalUnrealizedGain": -66.0231,
+              "totalUnrealizedGainPerc": -48.25435178708858
+            }
+          },
+          "holdingSubType": "total",
+          "xirr": -16.3
+        }
+      ],
+      "state": "CACHED",
+      "requestId": "5ebe3356-fc49-4d48-a481-afd36d502ce1"
+    }
+  ]
+}

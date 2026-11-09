@@ -217,7 +217,9 @@ async def test_contract_place_order(
     decrypted_response = {"order_id": "ord-8888-xyz", "status": "pending"}
     encrypted_response = test_cipher.encrypt_json(decrypted_response)
 
-    respx_mock.post("/orders").mock(return_value=httpx.Response(200, json=encrypted_response))
+    respx_mock.post("/trading/orders/place-order").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
 
     ctx = make_ctx()
     result = await trading_place_order(
