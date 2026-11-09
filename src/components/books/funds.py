@@ -7,25 +7,33 @@ from api.base import BaseClient
 from utils.decorators import milotic_tool
 from utils.session import get_session_headers
 
+VALID_FUNDS_SEGMENTS = {"EQ", "COMM"}
+
 
 @tool()
 @milotic_tool
 async def books_get_funds(ctx: Context, segment: str = "EQ") -> dict:
     """
-    Fetch available cash balance, utilized margin, collateral margin, MTF buying power,
-    and withdrawable balance for trading.
-    segment: 'EQ', 'FO', 'CURR', 'COMM' (defaults to 'EQ').
+    Fetch available margin, ledger balance, utilized margin, collateral margin,
+    and cash/MTF buying power for trading.
+    segment: 'EQ' (Equity & Derivatives/F&O limits) or 'COMM' (Commodities). Defaults to 'EQ'.
     """
+    seg = segment.strip().upper() if segment else "EQ"
+    if seg not in VALID_FUNDS_SEGMENTS:
+        return {
+            "error": (
+                f"segment must be 'EQ' or 'COMM', got '{segment}'. "
+                "Note: F&O / derivative margins are reported under 'EQ'."
+            )
+        }
+
     headers = await get_session_headers(ctx)
     client = await BaseClient.instance("investor")
-    try:
-        return await client.get(
-            "/trading/v2/funds", params={"segment": segment.upper()}, headers=headers
-        )
-    except Exception:
-        return await client.get(
-            "/trading/margin", params={"segment": segment.upper()}, headers=headers
-        )
+    return await client.post(
+        "/funds/inquiry/get-limits",
+        json={"segment": seg},
+        headers=headers,
+    )
 
 
 @tool()
