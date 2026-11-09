@@ -2,6 +2,8 @@
 
 import asyncio
 import contextlib
+import json
+from pathlib import Path
 
 from fastmcp import Context
 from fastmcp.tools import tool
@@ -9,6 +11,7 @@ from fastmcp.tools import tool
 from api.base import BaseClient
 from utils.constants import VERSION
 from utils.decorators import milotic_tool
+from utils.session import get_session_headers
 
 _latest_sso_id: str | None = None
 _loopback_server: asyncio.AbstractServer | None = None
@@ -166,3 +169,67 @@ async def system_connect_verify(ctx: Context, redirect_url: str | None = None) -
             "error": str(e),
             "message": "Authentication failed. Please start over using system_connect_start.",
         }
+
+
+@tool()
+@milotic_tool
+async def system_get_profile(ctx: Context) -> dict:
+    """
+    Fetch the authenticated user's account profile, active subAccountId, name,
+    account type, and linked sub-accounts.
+    """
+    sub_account_id = await ctx.get_state("sub_account_id")
+    accounts: list = []
+
+    p = Path(".session.json")
+    if p.exists():
+        with contextlib.suppress(Exception):
+            session_data = json.loads(p.read_text())
+            accounts = session_data.get("accounts", [])
+            if not sub_account_id:
+                sub_account_id = session_data.get("sub_account_id")
+
+    primary = next((acc for acc in accounts if acc.get("isPrimary")), None)
+    if not primary and accounts:
+        primary = accounts[0]
+
+    profile_data: dict = {
+        "subAccountId": sub_account_id,
+        "primaryAccount": primary,
+        "allAccounts": accounts,
+    }
+
+    try:
+        headers = await get_session_headers(ctx)
+        client = await BaseClient.instance("investor")
+        remote_profile = await client.get("/user/profile", headers=headers)
+        if isinstance(remote_profile, dict) and "data" in remote_profile:
+            profile_data["details"] = remote_profile.get("data")
+    except Exception:
+        pass
+
+    return profile_data
+
+
+@tool()
+@milotic_tool
+async def system_disconnect_session(ctx: Context) -> dict:
+    """
+    Terminate the active session, clear session tokens, and remove local session files.
+    """
+    await ctx.set_state("auth_token", None)
+    await ctx.set_state("refresh_token", None)
+    await ctx.set_state("sub_account_id", None)
+    await ctx.set_state("sso_id", None)
+
+    p = Path(".session.json")
+    if p.exists():
+        with contextlib.suppress(Exception):
+            p.unlink()
+
+    return {
+        "status": "disconnected",
+        "message": (
+            "Successfully signed out. Session tokens and local session file have been cleared."
+        ),
+    }

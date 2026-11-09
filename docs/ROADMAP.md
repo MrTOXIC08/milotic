@@ -72,20 +72,23 @@ flowchart LR
 ```
 
 ### Phase 1: Execution Hardening & Account Safety (High Priority)
-- [ ] Add `account_get_margins` to query available balance and collateral.
-- [ ] Implement `trading_modify_order` (modify price, quantity, trigger price).
-- [ ] Add Stop-Loss support (`SL` / `SL-M` with `trigger_price`) to `trading_place_order`.
-- [ ] Implement `trading_get_trades` for fill logs and average fill price.
+- [x] Add `books_get_funds` to query available balance, utilized margin, and collateral.
+- [x] Implement pre-trade margin calculator (`trading_calculate_margin`).
+- [x] Implement `trading_modify_order` (modify price, quantity, trigger price).
+- [x] Add Stop-Loss support (`SL`, `SL-M`, `stop_limit` with `trigger_price`) to `trading_place_order`.
+- [x] Implement `trading_get_trades` for fill logs and average fill price.
+- [x] Implement `trading_get_order_history` for lifecycle / audit trail.
+- [x] Implement `system_get_profile` and `system_disconnect_session`.
 
 ### Phase 2: Market Data & Instrument Discovery (High Priority)
-- [ ] Implement `market_search_instruments` (search scrips by symbol, name, ISIN).
-- [ ] Add `market_get_quote` and `market_get_ltp` for live price verification.
-- [ ] Add `market_get_historical_data` for candle time-series data.
-- [ ] Add `market_get_depth` (L2 5-depth order book).
+- [x] Implement `market_search_instruments` (search scrips by symbol, name, ISIN across holdings and master).
+- [x] Add `market_get_quotes` and `market_get_ltp` for live price verification.
+- [x] Add `market_get_ohlcv` for candle time-series data.
+- [x] Add `market_get_depth` (L2 5-depth order book).
 
 ### Phase 3: Positions & Derivatives (Medium Priority)
-- [ ] Implement `positions_get_open_positions` (day/net intraday & F&O with MTM).
-- [ ] Implement `positions_convert` (MIS ↔ CNC / NRML).
+- [x] Implement `books_get_positions` (day/net intraday & F&O with MTM).
+- [x] Implement `trading_convert_position` (MIS ↔ CNC / NRML / MTF).
 - [ ] Implement `derivatives_get_option_chain` with strike ladder and open interest.
 
 ### Phase 4: Conditional Orders & Advanced Automation (Low Priority)

@@ -53,8 +53,12 @@ class Settings(BaseSettings):
             "login": self.LOGIN_BACKEND_URL,
             "investor": self.INVESTOR_BACKEND_URL,
             "research": self.INVESTOR_BACKEND_URL,
+            "trading": self.INVESTOR_BACKEND_URL,
+            "account": self.INVESTOR_BACKEND_URL,
+            "market": self.INVESTOR_BACKEND_URL,
+            "books": self.INVESTOR_BACKEND_URL,
         }
-        url = mapping.get(category)
+        url = mapping.get(category, self.INVESTOR_BACKEND_URL)
         if not url:
             raise BackendConnectionError(
                 f"No backend URL configured for category '{category}'. "

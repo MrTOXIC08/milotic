@@ -157,9 +157,7 @@ async def research_for_portfolio(ctx: Context, limit: int = 50, sort: str = "des
     portfolio = await client.get("trading/v2/portfolio/multi", headers=portfolio_headers)
     held = _held_script_ids(portfolio)
 
-    raw, config_ts = await _fetch_recommendations(
-        client, headers, limit=limit, offset=0, sort=sort
-    )
+    raw, config_ts = await _fetch_recommendations(client, headers, limit=limit, offset=0, sort=sort)
 
     matched = []
     for e in raw:
