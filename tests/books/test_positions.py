@@ -29,30 +29,37 @@ async def test_books_get_positions(mock_env):
                 200, json={"status": "OK", "data": [{"symbol": "INFY", "netQty": 10}]}
             )
         )
+        # Default position_type="all" fetches both daily and expiry concurrently
         res = await books_get_positions(ctx, segment="EQ")
         assert res["status"] == "OK"
-        assert res["data"][0]["symbol"] == "INFY"
+        assert res["data"]["daily"][0]["symbol"] == "INFY"
+        assert res["data"]["expiry"][0]["symbol"] == "INFY"
+        assert res["summary"]["dailyCount"] == 1
+        assert res["summary"]["expiryCount"] == 1
 
-        # Verify request headers and payload
+        # Verify request headers on route call
         last_request = route.calls.last.request
         assert (
             last_request.headers.get("x-securityinfoprojection")
             == SECURITY_INFO_PROJECTION_POSITIONS
         )
+
         import json
 
-        body = json.loads(last_request.content)
-        assert body == {"interop": True, "segment": "EQ", "type": "daily"}
+        # Verify targeted daily query
+        await books_get_positions(ctx, segment="EQ", position_type="daily")
+        body_daily = json.loads(route.calls.last.request.content)
+        assert body_daily == {"interop": True, "segment": "EQ", "type": "daily"}
 
-        # Verify COMM defaults
-        await books_get_positions(ctx, segment="COMM")
+        # Verify targeted expiry query
+        await books_get_positions(ctx, segment="EQ", position_type="expiry")
+        body_expiry = json.loads(route.calls.last.request.content)
+        assert body_expiry == {"interop": True, "segment": "EQ", "type": "expiry"}
+
+        # Verify COMM overrides
+        await books_get_positions(ctx, segment="COMM", position_type="expiry")
         body_comm = json.loads(route.calls.last.request.content)
         assert body_comm == {"interop": False, "segment": "COMM", "type": "expiry"}
-
-        # Verify custom overrides
-        await books_get_positions(ctx, segment="FO", position_type="expiry", interop=False)
-        body_fo = json.loads(route.calls.last.request.content)
-        assert body_fo == {"interop": False, "segment": "FO", "type": "expiry"}
 
 
 @pytest.mark.asyncio
