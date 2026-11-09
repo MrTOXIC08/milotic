@@ -177,7 +177,9 @@ async def trading_cancel_order(ctx: Context, order_id: str) -> dict:
                 "transactionType": existing.get("transactionType"),
                 "validityType": existing.get("validityType", "DAY"),
                 "exchange": (
-                    "NSE" if "NSE" in str(existing.get("exchange", "")) else str(existing.get("exchange"))
+                    "NSE"
+                    if "NSE" in str(existing.get("exchange", ""))
+                    else str(existing.get("exchange"))
                 ),
                 "segment": existing.get("segment") or "EQ",
                 "scriptId": str(existing.get("scriptId")),
@@ -282,41 +284,25 @@ async def trading_get_order(ctx: Context, order_id: str, segment: str = "EQ") ->
     headers = await get_session_headers(ctx)
     client = await BaseClient.instance("investor")
 
-    try:
-        book = await client.post(
-            "/trading/orders/get-order-book",
-            json={"segment": segment.upper(), "orderStatus": "2"},
-            headers=headers,
-        )
-        orders = (
-            book.get("data", [])
-            if isinstance(book, dict)
-            else (book if isinstance(book, list) else [])
-        )
-        for order in orders:
-            oms_id = str(order.get("omsOrderId"))
-            ref_id = str(order.get("orderRefId"))
-            if oms_id == str(order_id) or ref_id == str(order_id):
-                return order
-
-        # Check cancelled orders
-        book_cancelled = await client.post(
-            "/trading/orders/get-order-book",
-            json={"segment": segment.upper(), "orderStatus": "1"},
-            headers=headers,
-        )
-        orders_c = (
-            book_cancelled.get("data", [])
-            if isinstance(book_cancelled, dict)
-            else (book_cancelled if isinstance(book_cancelled, list) else [])
-        )
-        for order in orders_c:
-            oms_id = str(order.get("omsOrderId"))
-            ref_id = str(order.get("orderRefId"))
-            if oms_id == str(order_id) or ref_id == str(order_id):
-                return order
-    except Exception:
-        pass
+    for status_code in ("2", "1"):
+        try:
+            book = await client.post(
+                "/trading/orders/get-order-book",
+                json={"segment": segment.upper(), "orderStatus": status_code},
+                headers=headers,
+            )
+            orders = (
+                book.get("data", [])
+                if isinstance(book, dict)
+                else (book if isinstance(book, list) else [])
+            )
+            for order in orders:
+                oms_id = str(order.get("omsOrderId"))
+                ref_id = str(order.get("orderRefId"))
+                if oms_id == str(order_id) or ref_id == str(order_id):
+                    return order
+        except Exception:
+            pass
 
     return await client.get(f"/orders/{order_id}", headers=headers)
 
