@@ -1,8 +1,6 @@
 """Trading order management tools."""
 
-import json
 import uuid
-from pathlib import Path
 
 from fastmcp import Context
 from fastmcp.tools import tool
@@ -10,70 +8,12 @@ from fastmcp.tools import tool
 from api.base import BaseClient
 from utils.decorators import milotic_tool
 from utils.errors import BackendConnectionError
+from utils.scrips import resolve_script_id_async
+from utils.scrips import resolve_script_id, resolve_script_id_async
 from utils.session import get_session_headers
 
 VALID_SIDES = {"buy", "sell"}
 VALID_ORDER_TYPES = {"market", "limit", "stop_limit", "rl-mkt", "rl", "sl", "sl-m"}
-
-
-def resolve_script_id(symbol: str, exchange: str = "NSE") -> str:
-    """Resolve an exchange-specific scriptId from symbol, portfolio, or known scrips."""
-    sym = symbol.strip().upper()
-    if sym.isdigit():
-        return sym
-
-    known_scrips: dict[str, dict[str, str]] = {
-        "IDEA": {"NSE": "2214366", "BSE": "11532822"},
-        "VODAFONE IDEA": {"NSE": "2214366", "BSE": "11532822"},
-        "ACC": {"NSE": "2222", "BSE": "11500410"},
-    }
-    if sym in known_scrips and exchange in known_scrips[sym]:
-        return known_scrips[sym][exchange]
-
-    try:
-        p = Path(".portfolio.json")
-        if p.exists():
-            data = json.loads(p.read_text())
-            for h in data.get("data", [{}])[0].get("holdings", []):
-                h_name = h.get("name", "").upper()
-                if sym == h_name or sym in h_name:
-                    sec_info = h.get("securityInfo", [])
-                    prefix = "22" if exchange == "NSE" else "11"
-                    for s in sec_info:
-                        sid = str(s.get("scriptId", ""))
-                        if sid.startswith(prefix):
-                            return sid
-                    if sec_info:
-                        return str(sec_info[0].get("scriptId", ""))
-    except Exception:
-        pass
-    return sym
-
-
-async def resolve_script_id_async(ctx: Context, symbol: str, exchange: str = "NSE") -> str:
-    """
-    Resolve an exchange-specific scriptId asynchronously.
-    First checks local static scrips & portfolio, then falls back to Axis Direct
-    live search API (/search/get-all). Returns symbol unchanged if unresolvable.
-    """
-    sym = symbol.strip().upper()
-    if sym.isdigit():
-        return sym
-
-    local_resolved = resolve_script_id(sym, exchange=exchange)
-    if local_resolved != sym:
-        return local_resolved
-
-    try:
-        from components.market.search import search_security_id
-
-        api_resolved = await search_security_id(ctx, sym, exchange=exchange)
-        if api_resolved:
-            return api_resolved
-    except Exception:
-        pass
-
-    return sym
 
 
 # TODO(v2): add advisory rate throttle here once day-pass consent lands (fail-open,
