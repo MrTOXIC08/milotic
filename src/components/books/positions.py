@@ -4,25 +4,49 @@ from fastmcp import Context
 from fastmcp.tools import tool
 
 from api.base import BaseClient
+from utils.constants import (
+    HEADER_SECURITY_INFO_PROJECTION,
+    SECURITY_INFO_PROJECTION_POSITIONS,
+)
 from utils.decorators import milotic_tool
 from utils.session import get_session_headers
 
 
 @tool()
 @milotic_tool
-async def books_get_positions(ctx: Context, segment: str = "EQ") -> dict:
+async def books_get_positions(
+    ctx: Context,
+    segment: str = "EQ",
+    position_type: str | None = None,
+    interop: bool | None = None,
+) -> dict:
     """
-    Fetch active intraday and open F&O derivative positions with live Mark-to-Market (MTM) P&L,
-    buy/sell quantities, and net open quantities.
-    segment: 'EQ', 'FO', 'CURR', 'COMM' (defaults to 'EQ').
+    Fetch active intraday and open F&O / commodity derivative positions with live
+    Mark-to-Market (MTM) P&L, buy/sell quantities, prices, lot sizes, and security details.
+    segment: 'EQ', 'FO', 'COMM', 'CURR' (defaults to 'EQ').
+    position_type: 'daily' or 'expiry' (defaults to 'daily' for EQ/FO/CURR, 'expiry' for COMM).
+    interop: Exchange interoperability enabled (defaults to True for EQ/FO, False for COMM).
     """
+    seg = segment.strip().upper() if segment else "EQ"
+
+    if interop is None:
+        interop = seg != "COMM"
+
+    if position_type is None:
+        p_type = "expiry" if seg == "COMM" else "daily"
+    else:
+        p_type = position_type.strip().lower()
+
     headers = await get_session_headers(ctx)
+    headers[HEADER_SECURITY_INFO_PROJECTION] = SECURITY_INFO_PROJECTION_POSITIONS
+
     client = await BaseClient.instance("investor")
-    payload = {"segment": segment.upper()}
-    try:
-        return await client.post("/trading/orders/get-positions", json=payload, headers=headers)
-    except Exception:
-        return await client.get("/trading/positions", params=payload, headers=headers)
+    payload = {
+        "interop": interop,
+        "segment": seg,
+        "type": p_type,
+    }
+    return await client.post("/trading/portfolio/get-positions", json=payload, headers=headers)
 
 
 @tool()
