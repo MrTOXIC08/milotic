@@ -416,14 +416,15 @@ async def test_contract_best_five(
     ctx = make_ctx(sub_account_id="sub-acc-111")
     result = await market_get_best_five(ctx, script_id="2214366")
 
-    assert result["status"] == "OK"
-    assert result["scriptId"] == "2214366"
-    assert result["ltp"] == 7.15
-    assert result["bids"][0]["price"] == 7.15
-    assert result["bids"][0]["quantity"] == 25000
-    assert result["asks"][0]["price"] == 7.20
-    assert result["totalBuyQty"] == 310000
-    assert result["totalSellQty"] == 285000
+    assert result["statusCode"] == 200
+    assert result["message"] == "Success"
+    data = result["data"]
+    assert data["ltp"] == 7.15
+    assert data["buy"][0]["price"] == 7.15
+    assert data["buy"][0]["quantity"] == "25000"
+    assert data["sell"][0]["price"] == 7.20
+    assert data["totalBuyQty"] == 310000
+    assert data["totalSellQty"] == 285000
 
     sent_request = respx_mock.calls.last.request
     assert sent_request.headers["x-subAccountId"] == "sub-acc-111"

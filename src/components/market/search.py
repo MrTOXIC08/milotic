@@ -10,8 +10,19 @@ from fastmcp.tools import tool
 
 from api.base import BaseClient
 from utils.decorators import milotic_tool
-from utils.scrips import KNOWN_SCRIPS
 from utils.session import get_session_headers
+
+KNOWN_SCRIPS: dict[str, dict[str, str]] = {
+    "IDEA": {"NSE": "2214366", "BSE": "11532822", "isin": "INE669E01016"},
+    "VODAFONE IDEA": {"NSE": "2214366", "BSE": "11532822", "isin": "INE669E01016"},
+    "ACC": {"NSE": "2222", "BSE": "11500410", "isin": "INE012A01025"},
+    "RELIANCE": {"NSE": "222885", "BSE": "11500325", "isin": "INE002A01018"},
+    "TCS": {"NSE": "2211536", "BSE": "11532540", "isin": "INE467B01029"},
+    "INFY": {"NSE": "221594", "BSE": "11500209", "isin": "INE009A01021"},
+    "HDFCBANK": {"NSE": "221333", "BSE": "11500180", "isin": "INE040A01034"},
+    "ICICIBANK": {"NSE": "224963", "BSE": "11532174", "isin": "INE090A01021"},
+    "SBIN": {"NSE": "223045", "BSE": "11500112", "isin": "INE062A01020"},
+}
 
 
 def _extract_item_data(item: dict[str, Any], exchange: str) -> dict[str, Any] | None:

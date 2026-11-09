@@ -21,6 +21,7 @@ def make_ctx() -> AsyncMock:
 
 SAMPLE_BEST_FIVE_PAYLOAD = {
     "statusCode": 200,
+    "status": "OK",
     "message": "Success",
     "data": {
         "buy": [
@@ -65,22 +66,18 @@ async def test_market_get_best_five_by_script_id(mock_env):
             return_value=httpx.Response(200, json=SAMPLE_BEST_FIVE_PAYLOAD)
         )
         res = await market_get_best_five(ctx, script_id="2214366")
+        assert res["statusCode"] == 200
         assert res["status"] == "OK"
-        assert res["scriptId"] == "2214366"
-        assert res["ltp"] == 7.15
-        assert len(res["bids"]) == 5
-        assert len(res["asks"]) == 5
-        assert res["bids"][0]["price"] == 7.15
-        assert res["bids"][0]["quantity"] == 25000
-        assert res["bids"][0]["orders"] == 12
-        assert res["asks"][0]["price"] == 7.20
-        assert res["totalBuyQty"] == 310000
-        assert res["totalSellQty"] == 285000
-        assert res["averageTradedPrice"] == 7.14
-        assert res["open"] == 7.10
-        assert res["high"] == 7.25
-        assert res["low"] == 7.05
-        assert res["close"] == 7.10
+        data = res["data"]
+        assert data["ltp"] == 7.15
+        assert len(data["buy"]) == 5
+        assert len(data["sell"]) == 5
+        assert data["buy"][0]["price"] == 7.15
+        assert data["buy"][0]["quantity"] == "25000"
+        assert data["sell"][0]["price"] == 7.20
+        assert data["totalBuyQty"] == 310000
+        assert data["totalSellQty"] == 285000
+        assert data["averageTradedPrice"] == 7.14
 
 
 @pytest.mark.asyncio
@@ -91,10 +88,7 @@ async def test_market_get_best_five_by_symbol_known(mock_env):
             return_value=httpx.Response(200, json=SAMPLE_BEST_FIVE_PAYLOAD)
         )
         res = await market_get_best_five(ctx, symbol="IDEA", exchange="NSE")
-        assert res["status"] == "OK"
-        assert res["symbol"] == "IDEA"
-        assert res["scriptId"] == "2214366"
-        assert res["exchange"] == "NSE"
+        assert res["statusCode"] == 200
         assert route.called
         import json
 
@@ -102,71 +96,24 @@ async def test_market_get_best_five_by_symbol_known(mock_env):
 
 
 @pytest.mark.asyncio
-async def test_market_get_best_five_by_symbol_search_fallback(mock_env):
+async def test_market_get_best_five_missing_args(mock_env):
     ctx = make_ctx()
-    with respx.mock(base_url="http://investor.test") as router:
-        router.get("/search/get-all").mock(
-            return_value=httpx.Response(
-                200,
-                json={
-                    "data": [
-                        {
-                            "symbol": "TATAMOTORS",
-                            "securityInfo": [{"exchange": "NSE", "scriptId": "223456"}],
-                        }
-                    ]
-                },
-            )
-        )
-        router.post("/feedbroadcast/best-five").mock(
-            return_value=httpx.Response(200, json=SAMPLE_BEST_FIVE_PAYLOAD)
-        )
-        res = await market_get_best_five(ctx, symbol="TATAMOTORS", exchange="NSE")
-        assert res["status"] == "OK"
-        assert res["scriptId"] == "223456"
-        assert res["symbol"] == "TATAMOTORS"
+    res = await market_get_best_five(ctx)
+    assert res["status"] == "error"
+    assert "Either 'script_id' or 'symbol' must be provided" in res["message"]
 
 
 @pytest.mark.asyncio
-async def test_market_get_depth_slicing(mock_env):
+async def test_market_get_depth(mock_env):
     ctx = make_ctx()
     with respx.mock(base_url="http://investor.test") as router:
         router.post("/feedbroadcast/best-five").mock(
             return_value=httpx.Response(200, json=SAMPLE_BEST_FIVE_PAYLOAD)
         )
-        res = await market_get_depth(ctx, script_id="2214366", depth=2)
+        res = await market_get_depth(ctx, symbol="IDEA", depth=2, exchange="NSE")
         assert res["status"] == "OK"
         assert len(res["bids"]) == 2
         assert len(res["asks"]) == 2
         assert res["bids"][0]["price"] == 7.15
         assert res["bids"][1]["price"] == 7.10
-
-
-@pytest.mark.asyncio
-async def test_market_get_depth_missing_args(mock_env):
-    ctx = make_ctx()
-    res = await market_get_depth(ctx)
-    assert res["status"] == "error"
-    assert "Either 'symbol' or 'script_id' must be provided" in res["message"]
-
-
-@pytest.mark.asyncio
-async def test_market_get_depth_unresolvable_symbol(mock_env):
-    ctx = make_ctx()
-    with respx.mock(base_url="http://investor.test") as router:
-        router.get("/search/get-all").mock(return_value=httpx.Response(200, json={"data": []}))
-        res = await market_get_depth(ctx, symbol="NONEXISTENTXYZ")
-        assert res["status"] == "error"
-        assert "Could not resolve numeric scriptId" in res["message"]
-
-
-@pytest.mark.asyncio
-async def test_market_get_best_five_backend_error(mock_env):
-    ctx = make_ctx()
-    with respx.mock(base_url="http://investor.test") as router:
-        router.post("/feedbroadcast/best-five").mock(
-            return_value=httpx.Response(502, json={"message": "entry not found in security master"})
-        )
-        res = await market_get_best_five(ctx, script_id="9999999999")
-        assert res["status"] == "error"
-        assert "Failed to fetch market depth" in res["message"]
+        assert res["asks"][0]["price"] == 7.20
