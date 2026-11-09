@@ -10,6 +10,7 @@ import respx
 from api.base import BaseClient
 from components.books.orders import (
     trading_cancel_order,
+    trading_get_all_orders,
     trading_get_order,
     trading_place_order,
 )
@@ -251,3 +252,46 @@ async def test_trading_get_order_not_connected_returns_error(mock_env):
 
     assert "error" in result
     mock_instance.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+@patch("api.base.BaseClient.post", new_callable=AsyncMock)
+async def test_trading_get_all_orders_uses_session_headers(mock_post: AsyncMock, mock_env):
+    mock_post.return_value = {"statusCode": 200, "status": "OK", "data": []}
+    ctx = make_ctx()
+
+    result = await trading_get_all_orders(ctx, segment="EQ", status="2")
+
+    assert result["statusCode"] == 200
+    mock_post.assert_awaited_once()
+    args, kwargs = mock_post.call_args
+    assert args[0] == "/trading/orders/get-order-book"
+    assert kwargs["json"] == {"segment": "EQ", "orderStatus": "2"}
+    assert kwargs["headers"]["x-authToken"] == "tok123"
+
+
+@pytest.mark.asyncio
+@patch("api.base.BaseClient.post", new_callable=AsyncMock)
+async def test_trading_get_order_from_order_book(mock_post: AsyncMock, mock_env):
+    mock_post.return_value = {
+        "statusCode": 200,
+        "status": "OK",
+        "data": [
+            {
+                "omsOrderId": "20261109041873",
+                "symbol": "IDEA",
+                "orderStatus": "EXECUTED",
+                "totalQty": 5,
+            }
+        ],
+    }
+    ctx = make_ctx()
+
+    result = await trading_get_order(ctx, order_id="20261109041873")
+
+    assert result["omsOrderId"] == "20261109041873"
+    assert result["symbol"] == "IDEA"
+    assert result["orderStatus"] == "EXECUTED"
+    mock_post.assert_awaited_once()
+    args, _ = mock_post.call_args
+    assert args[0] == "/trading/orders/get-order-book"

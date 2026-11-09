@@ -52,6 +52,7 @@ class Settings(BaseSettings):
         mapping = {
             "login": self.LOGIN_BACKEND_URL,
             "investor": self.INVESTOR_BACKEND_URL,
+            "research": self.INVESTOR_BACKEND_URL,
         }
         url = mapping.get(category)
         if not url:
