@@ -23,14 +23,34 @@ def make_ctx() -> AsyncMock:
 async def test_books_get_funds(mock_env):
     ctx = make_ctx()
     with respx.mock(base_url="http://investor.test") as router:
-        router.get("/trading/v2/funds").mock(
+        router.post("/funds/inquiry/get-limits").mock(
             return_value=httpx.Response(
-                200, json={"status": "OK", "data": {"availableCash": 100000.0}}
+                200,
+                json={
+                    "status": "OK",
+                    "statusCode": 200,
+                    "data": {
+                        "currentMarginAvailable": 1201.66,
+                        "ledgerBalance": -1036.36,
+                        "marginAgainstCollateral": 2755.82,
+                    },
+                },
             )
         )
         res = await books_get_funds(ctx, segment="EQ")
         assert res["status"] == "OK"
-        assert res["data"]["availableCash"] == 100000.0
+        assert res["data"]["currentMarginAvailable"] == 1201.66
+
+        comm_res = await books_get_funds(ctx, segment="COMM")
+        assert comm_res["status"] == "OK"
+
+
+@pytest.mark.asyncio
+async def test_books_get_funds_invalid_segment(mock_env):
+    ctx = make_ctx()
+    res = await books_get_funds(ctx, segment="FO")
+    assert "error" in res
+    assert "segment must be 'EQ' or 'COMM'" in res["error"]
 
 
 @pytest.mark.asyncio
