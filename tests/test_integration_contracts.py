@@ -22,6 +22,7 @@ from components.books.orders import (
     trading_place_order,
 )
 from components.books.portfolio import books_get_portfolio
+from components.market.orderbook import market_get_best_five
 from components.system.system import system_connect_start, system_connect_verify
 from utils.crypto import MiloticCipher
 
@@ -369,3 +370,68 @@ async def test_contract_get_portfolio(
     sent_request = respx_mock.calls.last.request
     assert sent_request.headers["X-SecurityInfoProjection"] == "scriptId"
     assert sent_request.headers["x-subAccountId"] == "sub-acc-111"
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_best_five(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify /feedbroadcast/best-five POST request encryption, headers, and depth schema."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "statusCode": 200,
+        "message": "Success",
+        "data": {
+            "buy": [
+                {"price": 7.15, "quantity": "25000", "noOfOrders": "12"},
+            ],
+            "sell": [
+                {"price": 7.20, "quantity": "30000", "noOfOrders": "15"},
+            ],
+            "ltp": 7.15,
+            "volume": 154200000,
+            "totalBuyQty": 310000,
+            "totalSellQty": 285000,
+            "averageTradedPrice": 7.14,
+        },
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/feedbroadcast/best-five").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(sub_account_id="sub-acc-111")
+    result = await market_get_best_five(ctx, script_id="2214366")
+
+    assert result["statusCode"] == 200
+    assert result["message"] == "Success"
+    data = result["data"]
+    assert data["ltp"] == 7.15
+    assert data["buy"][0]["price"] == 7.15
+    assert data["buy"][0]["quantity"] == "25000"
+    assert data["sell"][0]["price"] == 7.20
+    assert data["totalBuyQty"] == 310000
+    assert data["totalSellQty"] == 285000
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-subAccountId"] == "sub-acc-111"
+    assert sent_request.headers["X-API-Encryption-Key"] == "session-header"
+    assert sent_request.headers["x-api-client-id"] == "test-client"
+
+    # Verify that the outgoing request body was encrypted
+    req_body = json.loads(sent_request.content)
+    decrypted_body = test_cipher.decrypt_json(req_body)
+    assert decrypted_body == {"scriptId": "2214366"}

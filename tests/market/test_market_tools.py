@@ -193,9 +193,17 @@ async def test_market_get_ohlcv(mock_env):
 async def test_market_get_depth(mock_env):
     ctx = make_ctx()
     with respx.mock(base_url="http://investor.test") as router:
-        router.get("/market/orderbook/SBIN").mock(
+        router.post("/feedbroadcast/best-five").mock(
             return_value=httpx.Response(
-                200, json={"status": "OK", "bids": [{"price": 750.0, "qty": 100}], "asks": []}
+                200,
+                json={
+                    "status": "OK",
+                    "data": {
+                        "buy": [{"price": 750.0, "quantity": 100, "noOfOrders": 5}],
+                        "sell": [],
+                        "ltp": 750.0,
+                    },
+                },
             )
         )
         res = await market_get_depth(ctx, symbol="SBIN", depth=5)
