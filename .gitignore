@@ -19,6 +19,8 @@ env/
 .vscode/
 *.swp
 *.swo
+.agents/plugins/
+.agents/mcp_config.json
 
 # OS
 .DS_Store

@@ -13,7 +13,7 @@ from utils.errors import BackendConnectionError
 from utils.session import get_session_headers
 
 VALID_SIDES = {"buy", "sell"}
-VALID_ORDER_TYPES = {"market", "limit", "stop_limit", "rl-mkt", "rl"}
+VALID_ORDER_TYPES = {"market", "limit", "stop_limit", "rl-mkt", "rl", "sl", "sl-m"}
 
 
 def resolve_script_id(symbol: str, exchange: str = "NSE") -> str:
@@ -50,6 +50,32 @@ def resolve_script_id(symbol: str, exchange: str = "NSE") -> str:
     return sym
 
 
+async def resolve_script_id_async(ctx: Context, symbol: str, exchange: str = "NSE") -> str:
+    """
+    Resolve an exchange-specific scriptId asynchronously.
+    First checks local static scrips & portfolio, then falls back to Axis Direct
+    live search API (/search/get-all). Returns symbol unchanged if unresolvable.
+    """
+    sym = symbol.strip().upper()
+    if sym.isdigit():
+        return sym
+
+    local_resolved = resolve_script_id(sym, exchange=exchange)
+    if local_resolved != sym:
+        return local_resolved
+
+    try:
+        from components.market.search import search_security_id
+
+        api_resolved = await search_security_id(ctx, sym, exchange=exchange)
+        if api_resolved:
+            return api_resolved
+    except Exception:
+        pass
+
+    return sym
+
+
 # TODO(v2): add advisory rate throttle here once day-pass consent lands (fail-open,
 # UX-only — server remains authoritative for the 10 orders/sec compliance cap).
 @tool()
@@ -61,6 +87,7 @@ async def trading_place_order(
     quantity: float,
     order_type: str,
     price: float | None = None,
+    trigger_price: float | None = None,
     product_type: str = "MTF",
     exchange: str = "NSE",
     segment: str = "EQ",
@@ -71,7 +98,9 @@ async def trading_place_order(
     """
     Place a new order. ALWAYS call with confirmed=False first to preview, then
     confirmed=True only after the user explicitly approves the previewed order.
-    side: 'buy' or 'sell'. order_type: 'market', 'limit', 'stop_limit', 'rl-mkt', 'rl'.
+    side: 'buy' or 'sell'.
+    order_type: 'market', 'limit', 'stop_limit', 'rl-mkt', 'rl', 'sl', 'sl-m'.
+    trigger_price: Required for stop-loss orders ('stop_limit', 'sl', 'sl-m').
     """
     symbol = symbol.strip().upper()
     side_norm = side.lower()
@@ -80,11 +109,18 @@ async def trading_place_order(
     if side_norm not in VALID_SIDES:
         return {"error": f"side must be 'buy' or 'sell', got '{side}'"}
     if order_type_norm not in VALID_ORDER_TYPES:
-        return {"error": "order_type must be 'market', 'limit', 'stop_limit', 'rl-mkt', or 'rl'"}
+        return {
+            "error": (
+                "order_type must be 'market', 'limit', 'stop_limit', "
+                "'rl-mkt', 'rl', 'sl', or 'sl-m'"
+            )
+        }
     if quantity <= 0:
         return {"error": "quantity must be positive"}
-    if order_type_norm in ("limit", "stop_limit", "rl") and price is None:
+    if order_type_norm in ("limit", "stop_limit", "rl", "sl") and price is None:
         return {"error": f"price is required for {order_type_norm} orders"}
+    if order_type_norm in ("stop_limit", "sl", "sl-m") and trigger_price is None:
+        return {"error": f"trigger_price is required for {order_type_norm} orders"}
 
     if not confirmed:
         return {
@@ -94,6 +130,7 @@ async def trading_place_order(
             "quantity": quantity,
             "order_type": order_type_norm,
             "price": price,
+            "trigger_price": trigger_price,
             "product_type": product_type,
             "exchange": exchange,
             "segment": segment,
@@ -117,7 +154,10 @@ async def trading_place_order(
     else:
         order_type_mapped = order_type.upper()
 
-    script_id_resolved = script_id or resolve_script_id(symbol, exchange=exchange_norm)
+    if script_id:
+        script_id_resolved = script_id
+    else:
+        script_id_resolved = await resolve_script_id_async(ctx, symbol, exchange=exchange_norm)
 
     payload: dict = {
         # Go backend OMS DTO
@@ -139,6 +179,8 @@ async def trading_place_order(
     if price is not None:
         payload["price"] = price
         payload["orderPrice"] = price
+    if trigger_price is not None:
+        payload["triggerPrice"] = trigger_price
 
     client = await BaseClient.instance("investor")
     try:
@@ -198,6 +240,7 @@ async def trading_modify_order(
     order_id: str,
     quantity: float | None = None,
     price: float | None = None,
+    trigger_price: float | None = None,
     order_type: str | None = None,
     confirmed: bool = False,
 ) -> dict:
@@ -207,6 +250,7 @@ async def trading_modify_order(
     order_id: omsOrderId (e.g. '20261109054126').
     quantity: New quantity (must be positive).
     price: New limit price (optional).
+    trigger_price: New stop-loss trigger price (optional).
     order_type: 'market', 'limit', 'rl-mkt', or 'rl' (optional).
     """
     existing = await trading_get_order(ctx, order_id=order_id)
@@ -220,6 +264,9 @@ async def trading_modify_order(
 
     cur_price = existing.get("orderPrice")
     new_price = price if price is not None else cur_price
+
+    cur_trigger = existing.get("triggerPrice")
+    new_trigger = trigger_price if trigger_price is not None else cur_trigger
 
     cur_type = existing.get("orderType", "RL").upper()
     if order_type:
@@ -243,6 +290,8 @@ async def trading_modify_order(
             "new_quantity": new_qty,
             "old_price": cur_price,
             "new_price": new_price,
+            "old_trigger_price": cur_trigger,
+            "new_trigger_price": new_trigger,
             "order_type": new_type,
             "product_type": existing.get("product"),
             "message": "Call again with confirmed=True to execute this order modification.",
@@ -269,6 +318,8 @@ async def trading_modify_order(
     if new_price is not None:
         payload["orderPrice"] = new_price
         payload["price"] = new_price
+    if new_trigger is not None:
+        payload["triggerPrice"] = new_trigger
 
     return await client.post("/trading/orders/modify-order", json=payload, headers=headers)
 
@@ -319,3 +370,41 @@ async def trading_get_all_orders(ctx: Context, segment: str = "EQ", status: str 
     client = await BaseClient.instance("investor")
     payload = {"segment": segment.upper(), "orderStatus": str(status)}
     return await client.post("/trading/orders/get-order-book", json=payload, headers=headers)
+
+
+@tool()
+@milotic_tool
+async def trading_get_trades(ctx: Context, segment: str = "EQ") -> dict:
+    """
+    Fetch the executed trade book showing all individual trade fills, execution timestamps,
+    exchange trade IDs, and average fill prices.
+    segment: 'EQ', 'FO', 'CURR', 'COMM' (defaults to 'EQ').
+    """
+    headers = await get_session_headers(ctx)
+    client = await BaseClient.instance("investor")
+    payload = {"segment": segment.upper()}
+    try:
+        return await client.post("/trading/orders/get-trade-book", json=payload, headers=headers)
+    except Exception:
+        return await client.get("/trading/orders/trades", params=payload, headers=headers)
+
+
+@tool()
+@milotic_tool
+async def trading_get_order_history(ctx: Context, order_id: str, segment: str = "EQ") -> dict:
+    """
+    Fetch the state-by-state lifecycle and audit trail of an order from placement
+    to execution or cancellation.
+    order_id: omsOrderId or orderRefId.
+    segment: 'EQ', 'FO', 'CURR', 'COMM' (defaults to 'EQ').
+    """
+    headers = await get_session_headers(ctx)
+    client = await BaseClient.instance("investor")
+    payload = {"orderId": str(order_id), "segment": segment.upper()}
+    try:
+        return await client.post("/trading/orders/order-history", json=payload, headers=headers)
+    except Exception:
+        order = await trading_get_order(ctx, order_id=order_id, segment=segment)
+        if order and "error" not in order:
+            return {"orderId": order_id, "history": [order]}
+        return {"error": f"Order {order_id} history not found"}

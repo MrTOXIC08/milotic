@@ -1,0 +1,77 @@
+"""Positions management tools."""
+
+from fastmcp import Context
+from fastmcp.tools import tool
+
+from api.base import BaseClient
+from utils.decorators import milotic_tool
+from utils.session import get_session_headers
+
+
+@tool()
+@milotic_tool
+async def books_get_positions(ctx: Context, segment: str = "EQ") -> dict:
+    """
+    Fetch active intraday and open F&O derivative positions with live Mark-to-Market (MTM) P&L,
+    buy/sell quantities, and net open quantities.
+    segment: 'EQ', 'FO', 'CURR', 'COMM' (defaults to 'EQ').
+    """
+    headers = await get_session_headers(ctx)
+    client = await BaseClient.instance("investor")
+    payload = {"segment": segment.upper()}
+    try:
+        return await client.post("/trading/orders/get-positions", json=payload, headers=headers)
+    except Exception:
+        return await client.get("/trading/positions", params=payload, headers=headers)
+
+
+@tool()
+@milotic_tool
+async def trading_convert_position(
+    ctx: Context,
+    symbol: str,
+    quantity: int,
+    from_product: str,
+    to_product: str,
+    side: str = "buy",
+    exchange: str = "NSE",
+    segment: str = "EQ",
+    confirmed: bool = False,
+) -> dict:
+    """
+    Convert an open position product type (e.g. Intraday/MIS to Delivery/CNC/MTF or vice-versa).
+    ALWAYS call with confirmed=False first to preview, then confirmed=True after user approval.
+    """
+    if quantity <= 0:
+        return {"error": "quantity must be positive"}
+
+    sym = symbol.strip().upper()
+    from_p = from_product.upper()
+    to_p = to_product.upper()
+    side_norm = side.upper()
+
+    if not confirmed:
+        return {
+            "preview": True,
+            "symbol": sym,
+            "quantity": quantity,
+            "side": side_norm,
+            "from_product": from_p,
+            "to_product": to_p,
+            "exchange": exchange.upper(),
+            "segment": segment.upper(),
+            "message": "Call again with confirmed=True to execute position conversion.",
+        }
+
+    headers = await get_session_headers(ctx)
+    client = await BaseClient.instance("investor")
+    payload = {
+        "symbol": sym,
+        "quantity": quantity,
+        "transactionType": side_norm,
+        "fromProductType": from_p,
+        "toProductType": to_p,
+        "exchange": exchange.upper(),
+        "segment": segment.upper(),
+    }
+    return await client.post("/trading/orders/convert-position", json=payload, headers=headers)

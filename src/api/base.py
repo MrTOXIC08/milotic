@@ -176,6 +176,8 @@ class BaseClient:
             headers["X-API-Encryption-Key"] = self._encrypted_session_header
             if json_payload is not None:
                 kwargs["json"] = self._cipher.encrypt_json(json_payload)
+        elif json_payload is not None:
+            kwargs["json"] = json_payload
 
         try:
             response = await self._http_client.request(method, path, headers=headers, **kwargs)
