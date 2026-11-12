@@ -92,6 +92,7 @@ flowchart LR
 - [ ] Implement `derivatives_get_option_chain` with strike ladder and open interest.
 
 ### Phase 4: Conditional Orders & Advanced Automation (Low Priority)
+- [x] Implement Price Alerts triggers (`market_create_alert`, `market_get_alerts`, `market_delete_alert`).
 - [ ] Implement GTT / Forever conditional orders (`trading_place_gtt`, `trading_get_gtt`).
 - [ ] Basket order margin calculation and batch execution.
 - [ ] Automated portfolio rebalancing triggers combining research recommendations with GTT.

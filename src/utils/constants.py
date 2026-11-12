@@ -9,6 +9,7 @@ CATEGORY_MARKET = "market"
 CATEGORY_ACCOUNT = "account"
 CATEGORY_TRADING = "trading"
 CATEGORY_RESEARCH = "research"
+CATEGORY_ALERTS = "alerts"
 
 # --- Request Identification ---
 HEADER_REQUEST_ID = "X-Req-ID"

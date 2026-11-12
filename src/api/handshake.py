@@ -10,6 +10,7 @@ from async_lru import alru_cache
 
 from utils.errors import HandshakeError
 from utils.logging import logger
+from utils.ssl_context import get_ssl_context
 
 # Default cache TTL for the public key (e.g., 1 hour)
 DEFAULT_CACHE_TTL_SECONDS = 3600
@@ -42,7 +43,8 @@ class HandshakeClient:
         self.client_id_header = client_id_header
         self.client_authorization_header = client_authorization_header
         self._http_client = httpx.AsyncClient(
-            event_hooks={"request": [_log_request], "response": [_log_response]}
+            verify=get_ssl_context(),
+            event_hooks={"request": [_log_request], "response": [_log_response]},
         )
 
     @alru_cache(maxsize=1, ttl=DEFAULT_CACHE_TTL_SECONDS)

@@ -52,3 +52,8 @@ dev = [
     "respx>=0.21.0",
     "debugpy>=1.8.0",
 ]
+
+[tool.uv]
+package = false
+system-certs = true
+

@@ -45,7 +45,7 @@ import sys
 config_path, repo_dir, label, uv_bin = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 entry = {
     "command": uv_bin,
-    "args": ["run", "--directory", repo_dir, "python", "src/server.py"],
+    "args": ["run", "--no-sync", "--directory", repo_dir, "python", "src/server.py"],
     "env": {"PYTHONPATH": "src"},
 }
 

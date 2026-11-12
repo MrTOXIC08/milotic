@@ -22,6 +22,11 @@ from components.books.orders import (
     trading_place_order,
 )
 from components.books.portfolio import books_get_portfolio
+from components.market.alerts import (
+    market_create_alert,
+    market_delete_alert,
+    market_get_alerts,
+)
 from components.market.orderbook import market_get_best_five
 from components.system.system import system_connect_start, system_connect_verify
 from utils.crypto import MiloticCipher
@@ -435,3 +440,155 @@ async def test_contract_best_five(
     req_body = json.loads(sent_request.content)
     decrypted_body = test_cipher.decrypt_json(req_body)
     assert decrypted_body == {"scriptId": "2214366"}
+
+
+# ---------------------------------------------------------------------------
+# 7. PRICE ALERTS CONTRACTS (POST /alerts, GET /alerts, GET /alerts/delete/{id})
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_create_alert(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify POST /alerts payload encryption, headers, and decrypted response schema."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "statusCode": 200,
+        "status": "OK",
+        "data": {
+            "alertId": "41fd16b5-23d2-4b75-ab6a-cc7b2b12f74f",
+            "scriptId": "2214366",
+            "value": 13.0,
+            "condition": "GT",
+            "status": "Active",
+        },
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.post("/alerts").mock(return_value=httpx.Response(200, json=encrypted_response))
+
+    ctx = make_ctx(auth_token="test-token", sub_account_id="4433009")
+    result = await market_create_alert(
+        ctx,
+        script_id="2214366",
+        value=13.0,
+        condition="GT",
+        status="Active",
+        description="",
+    )
+
+    assert result["statusCode"] == 200
+    assert result["data"]["alertId"] == "41fd16b5-23d2-4b75-ab6a-cc7b2b12f74f"
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-authToken"] == "test-token"
+    assert sent_request.headers["x-subAccountId"] == "4433009"
+    assert sent_request.headers["x-api-client-id"] == "test-client"
+    assert sent_request.headers["X-API-Encryption-Key"] == "session-header"
+
+    req_body = json.loads(sent_request.content)
+    decrypted_body = test_cipher.decrypt_json(req_body)
+    assert decrypted_body == {
+        "scriptId": "2214366",
+        "value": 13.0,
+        "condition": "GT",
+        "status": "Active",
+        "description": "",
+    }
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_get_alerts(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify GET /alerts decrypted list response and headers."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    decrypted_response = {
+        "statusCode": 200,
+        "status": "OK",
+        "data": [
+            {
+                "id": "41fd16b5-23d2-4b75-ab6a-cc7b2b12f74f",
+                "scriptId": "2214366",
+                "value": 13.0,
+                "condition": "GT",
+                "status": "Active",
+            }
+        ],
+    }
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.get("/alerts").mock(return_value=httpx.Response(200, json=encrypted_response))
+
+    ctx = make_ctx(auth_token="test-token", sub_account_id="4433009")
+    result = await market_get_alerts(ctx)
+
+    assert result["statusCode"] == 200
+    assert len(result["data"]) == 1
+    assert result["data"][0]["scriptId"] == "2214366"
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-authToken"] == "test-token"
+    assert sent_request.headers["x-subAccountId"] == "4433009"
+
+
+@pytest.mark.asyncio
+@patch("api.base.SessionKeyProvider")
+@patch("api.handshake.HandshakeClient.get_public_key", new_callable=AsyncMock)
+async def test_contract_delete_alert(
+    mock_get_pub_key: AsyncMock, mock_provider, respx_mock, monkeypatch, test_cipher
+):
+    """Verify GET /alerts/delete/{alert_id} deletion contract and headers."""
+    mock_get_pub_key.return_value = "mock-pub-key"
+    mock_provider.return_value.encrypt_session_for_header.return_value = "session-header"
+
+    monkeypatch.setenv("CRYPTO_ENABLED", "true")
+    monkeypatch.setenv("INVESTOR_BACKEND_URL", "https://api.test.backend")
+    monkeypatch.setenv("API_CLIENT_ID", "test-client")
+    monkeypatch.setenv("AUTHORIZATION", "test-auth")
+    monkeypatch.setenv("API_SESSION_SECRET", "a" * 32)
+
+    importlib.reload(config)
+
+    alert_id = "41fd16b5-23d2-4b75-ab6a-cc7b2b12f74f"
+    decrypted_response = {"statusCode": 200, "status": "OK", "message": "Alert deleted"}
+    encrypted_response = test_cipher.encrypt_json(decrypted_response)
+
+    respx_mock.get(f"/alerts/delete/{alert_id}").mock(
+        return_value=httpx.Response(200, json=encrypted_response)
+    )
+
+    ctx = make_ctx(auth_token="test-token", sub_account_id="AXS555")
+    result = await market_delete_alert(ctx, alert_id=alert_id)
+
+    assert result["statusCode"] == 200
+    assert result["message"] == "Alert deleted"
+
+    sent_request = respx_mock.calls.last.request
+    assert sent_request.headers["x-authToken"] == "test-token"
+    assert sent_request.headers["x-subAccountId"] == "AXS555"

@@ -22,6 +22,7 @@ from utils.errors import (
     RateLimitError,
 )
 from utils.logging import logger
+from utils.ssl_context import get_ssl_context
 
 # Registry of one BaseClient instance per service category.
 _instances: dict[str, "BaseClient"] = {}
@@ -70,6 +71,7 @@ class BaseClient:
             new._base_url = _config.settings.backend_url(category)
             new._http_client = httpx.AsyncClient(
                 base_url=new._base_url,
+                verify=get_ssl_context(),
                 event_hooks={"request": [_log_request], "response": [_log_response]},
             )
             new._semaphore = asyncio.Semaphore(_config.settings.MAX_CONCURRENT_REQUESTS)

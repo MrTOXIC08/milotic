@@ -57,6 +57,7 @@ class Settings(BaseSettings):
             "account": self.INVESTOR_BACKEND_URL,
             "market": self.INVESTOR_BACKEND_URL,
             "books": self.INVESTOR_BACKEND_URL,
+            "alerts": self.INVESTOR_BACKEND_URL,
         }
         url = mapping.get(category, self.INVESTOR_BACKEND_URL)
         if not url:
